@@ -10,7 +10,9 @@ import java.util.HashMap;
  *
  */
 public interface GenerateInterface {
+
     /**
+     * GENERATE TEMPLATE
      * hash map coz how much varibles needed are not defined
      * @param hashMap
      * @return String
@@ -18,6 +20,7 @@ public interface GenerateInterface {
     public String generate(HashMap<String,Object> hashMap);
 
     /**
+     * SEND EMAIL
      * hash map coz how much varibles needed are not defined
      * @param response
      * @param hashMap
