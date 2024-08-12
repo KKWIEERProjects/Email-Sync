@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-ordinator</title>
+    <link rel="stylesheet" href="coordinator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body class="coordinator-page">
+    <div class="header">
+        <div class="div">
+            <div class="div-2">
+                <div class="div-3"></div>
+                <div class="mspv">
+                    <a href="index.html">MSPV</a>
+                  </div>
+            </div>
+            <div class="div-4">
+                <div class="date">11th July 2024 | 10:45 am</div>
+                <div class="div-5">
+
+                    <div class="mspv">
+                        <a href="index.html"></a>
+                    </div>
+                    <a href="#"><i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
+                    <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <hr class="line">
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="profile-pic"></div>
+                <h2>Mrs V.C. BAGAL</h2>
+                <p>HOD (Admin)</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="event.html"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                            Events</a></li>
+                    <li><a href="coordinator.html" id="coordinators-link"><i class="fa fa-address-book-o"
+                                style="font-size:26px; padding-right:30px"></i>
+                            Coordinators</a></li>
+                </ul>
+            </nav>
+
+            <button class="logout">Log Out</button>
+        </aside>
+        <hr class="sidebar-divider">
+
+        <main class="content">
+            <div class="header">
+                <div class="breadcrumb">
+                    <p>Home / Co-ordinator</p>
+                </div>
+                <div class="timestamp">
+                    <p>11th July 2024 | 10:45 am</p>
+                </div>
+            </div>
+            <h1>Assigned Co-ordinator</h1>
+            <div class="event-actions">
+                <input type="text" placeholder="Search using name or type">
+                <!-- <button class="create-event">Add Co-ordinator</button> -->
+
+                <button type="button" class="create-event" onclick="showPop()">Add Co-ordinator</button>
+
+                <!-- <div class="overlay" id="overlay"></div>
+                <div class="popup-form" id="popupForm">
+
+                    <button type="button" id="closePop" class="close-btn">×</button>
+                    
+                        <h2>Create New Event</h2>
+                
+
+                    <form id="event-form">
+                        <label for="event-name">Event Name:</label>
+                        <input type="text" id="event-name" name="event-name" required>
+                        <br>
+                        <label for="event-co">Select Co-ordinator:</label>
+                        <select id="event-name" name="Co-ordinator" required>
+                            <option value="" disabled selected>Select Co-ordinator</option>
+                            <option value="teacher1">Co-ordinator 1</option>
+                            <option value="teacher2">Co-ordinator 2</option>
+                            <option value="teacher3">Co-ordinator 3</option>
+                            <option value="teacher4">Co-ordinator 4</option>
+                        </select>
+                        <br>
+                        <label for="event-date">Event Date:</label>
+                        <input type="date" id="event-date" name="event-date" required>
+                        <br>
+                        
+                        <label for="event-name">Event Description:</label>
+                        <input type="text1" id="event-name" name="event-name" required>
+                        <br>
+                        <button type="submit">Add Event</button>
+                        <button type="button" id="closePop">Close</button>
+                    </form>
+                </div>
+ -->
+
+
+            </div>
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mrs. Archana Rane</td>
+                        <td>MCA</td>
+                        <td><span class="status confirmed">Confirmed</span></td>
+                        <td>
+                            <button type="button" class="edit" title="Edit" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="delete" title="Delete" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Mrs. Vandana Bagal</td>
+                        <td>MCA</td>
+                        <td><span class="status assigned">Assigned</span></td>
+                        <td>
+                            <button type="button" class="edit" title="Edit" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="delete" title="Delete" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Mrs. Poonam fegde</td>
+                        <td>MCA</td>
+                        <td><span class="status assigned">Assigned</span></td>
+                        <td>
+                            <button type="button" class="edit" title="Edit" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="delete" title="Delete" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>  
+    </div>
+    <script src="coordinator.js"></script>
+</body>
+
+</html>
+
+

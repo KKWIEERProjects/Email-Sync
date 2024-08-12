@@ -1,0 +1,356 @@
+/* header Styles */
+.header {
+    display: flex;
+    flex-direction: column;
+  }
+  .div {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(193, 193, 193, 1);
+    border-bottom-width: 1px;
+    display: flex;
+    width: 96.8%;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 30px;
+  }
+  @media (max-width: 991px) {
+    .div {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  }
+  .div-2 {
+    display: flex;
+    gap: 9px;
+    color: rgba(0, 0, 0, 1);
+    white-space: nowrap;
+    margin: auto 0;
+    font: 600 16px/1 Inter, sans-serif;
+  }
+  @media (max-width: 991px) {
+    .div-2 {
+      white-space: initial;
+    }
+  }
+  .div-3 {
+    background-color: #d9e2f3;
+    border-radius: 50%;
+    display: flex;
+    width: 47px;
+    height: 47px;
+  }
+  .mspv {
+    margin: auto 0;
+  }
+  .div-4 {
+    display: flex;
+    gap: 39px;
+  }
+  .date {
+    color: rgba(57, 57, 57, 1);
+    flex-grow: 1;
+    margin: auto 0;
+    font: 400 16px/1 Inter, sans-serif;
+  }
+  .div-5 {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: start;
+  }
+  .img {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 61px;
+    border-radius: 0px 0px 0px 0px;
+    align-self: stretch;
+    margin: auto 0;
+  }
+  .img-2 {
+    aspect-ratio: 1.61;
+    object-fit: contain;
+    object-position: center;
+    width: 90px;
+    border-radius: 0px 0px 0px 0px;
+    align-self: stretch;
+    margin: auto 0;
+  }
+  .line {
+    border-top: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+.sidebar-divider {
+    border-top: 1px solid #ccc; /* Adjust color and thickness as needed */
+    margin: 0 5px;
+
+  }
+.mspv a{
+    color: #007bff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f1f3f8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    background-color: #d9e2f3;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+.profile h2 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.profile p {
+    margin: 0;
+    color: #888;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: auto;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a.active {
+    color: #007bff;
+}
+
+.logout {
+    margin-top: 30px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Content Styles */
+.content {
+    width: 80%;
+    padding: 20px;
+    background-color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .breadcrumb {
+    color: #666;
+    font-size: 14px;
+}
+
+.header .timestamp {
+    color: #999;
+    font-size: 14px;
+}
+
+h1 {
+    margin-top: 10px;
+    color: #333;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.event-actions input {
+    padding: 10px;
+    flex-grow: 1; /* Allows the input to take up all available space */
+    margin-right: 10px; /* Adds some space between the input and the button */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-event {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap; /* Ensures the button text doesn't wrap */
+}
+
+
+
+/* Style for the form elements */
+
+
+.popup-form h2 {
+    border-bottom: 2px solid #ccc;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+}
+
+.popup-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.popup-form input[type="text"],
+.popup-form input[type="date"],
+.popup-form select  {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+.popup-form input[type="text1"]{
+    width: calc(100% - 20px);
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.popup-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.popup-form button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.popup-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.popup-form button[type="button"] {
+    background-color: #ccc;
+    color: #fff;
+}
+
+.popup-form button[type="button"]:hover {
+    background-color: #676767;
+}
+
+.close-btn {
+    position: absolute;
+    top: 21px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.close-btn:hover {
+    color: #ccc;
+}
+/*=============================================*/
+
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.events-table th, .events-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    color: #333;
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden;    /* Ensures content doesn't overflow outside of the cell */
+    text-overflow: ellipsis; /* Adds ellipses to truncated text */
+    max-width: 150px;    /* Adjust as needed to fit your design */
+}
+
+.events-table th {
+    background-color: #f9fafb;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status.confirmed {
+    background-color: #28a745;
+}
+
+.status.assigned {
+    background-color: #ffc107;
+}
+
+button.edit, button.delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+button.edit:hover {
+    color: #007bff;
+}
+
+button.delete:hover {
+    color: #dc3545;
+}
