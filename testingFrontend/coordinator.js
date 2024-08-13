@@ -1,35 +1,31 @@
+// Function to show the popup
+function showPopup() {
+    document.getElementById('popupForm').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
+
+// Function to hide the popup
+function closePopup() {
+    document.getElementById('popupForm').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
+// Initialize popup logic when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    const popupForm = document.getElementById('popupForm');
-    
-    if (popupForm) {
-        const overlay = document.getElementById('overlay');
-        const closePopup = document.getElementById('closePopup');
+    // Check if the elements exist before adding event listeners
+    const createEventButton = document.querySelector('.create-event');
+    const overlay = document.getElementById('overlay');
+    const closePopupButton = document.getElementById('closePopup');
 
-        function showPop() {
-            overlay.style.display = 'block';
-            popupForm.style.display = 'block';
-        }
+    if (createEventButton) {
+        createEventButton.addEventListener('click', showPopup);
+    }
 
-        function closePop() {
-            overlay.style.display = 'none';
-            popupForm.style.display = 'none';
-        }
+    if (overlay) {
+        overlay.addEventListener('click', closePopup);
+    }
 
-        closePopup.addEventListener('click', closePop);
-        overlay.addEventListener('click', closePop);
-
-        // Assuming you have a button to trigger the popup
-        const createButton = document.querySelector('.create-event');
-        if (createButton) {
-            createButton.addEventListener('click', showPop);
-        }
+    if (closePopupButton) {
+        closePopupButton.addEventListener('click', closePopup);
     }
 });
-
-
-// if (window.location.pathname === '/coordinator.html') {
-//     // Load the JavaScript for the popup
-//     var script = document.createElement('script');
-//     script.src = 'coordinator.js';
-//     document.head.appendChild(script);
-// }

@@ -322,7 +322,7 @@ h1 {
 .close-btn:hover {
     color: #ccc;
 }
-/*=============================================*/
+
 
 .event-actions {
     display: flex;
@@ -338,6 +338,10 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+
+
+/*=============================================*/
 
 .create-event {
     background-color: #007bff;

@@ -224,6 +224,26 @@ h1 {
 /* Style for the form elements */
 
 
+.popup-form {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Style for the form elements */
+
+
 .popup-form h2 {
     border-bottom: 2px solid #ccc;
     margin-top: 10px;
@@ -299,6 +319,24 @@ h1 {
 .close-btn:hover {
     color: #ccc;
 }
+
+
+.event-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.event-actions input {
+    padding: 10px;
+    flex-grow: 1; /* Allows the input to take up all available space */
+    margin-right: 10px; /* Adds some space between the input and the button */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
 /*=============================================*/
 
 .events-table {
