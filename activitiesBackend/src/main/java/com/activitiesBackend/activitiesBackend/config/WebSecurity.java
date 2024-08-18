@@ -60,7 +60,7 @@ public class WebSecurity {
 
         http.  csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/register","/registerhtml").permitAll()
+                        .requestMatchers("/register","/registerhtml","/user/add").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form

@@ -1,13 +1,15 @@
 package com.activitiesBackend.activitiesBackend.dto;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Generated;
+import lombok.*;
 import org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase;
 
 @Entity
 @Table(name="users")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
