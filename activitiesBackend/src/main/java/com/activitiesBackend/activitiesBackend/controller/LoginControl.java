@@ -32,6 +32,10 @@ public class LoginControl {
         return new ModelAndView("register");
     }
 
+    /*
+    do not use this mapping
+     */
+    @Deprecated
     @PostMapping("/register")
     public void reg(@RequestParam(value = "username") String username,@RequestParam String password) throws UserAlreadyThereException {
         System.out.println("ahsghjasdjahsdk");

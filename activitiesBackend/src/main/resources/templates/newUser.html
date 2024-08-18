@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <body>
+
+        <form action="/user/add" method="post">
+            Name:<input type="text" name="name"><br>
+            Email:<input type="email" name="email"><br>
+            <select name="roles">
+                <option value="ROLE_USER">Volvo</option>
+                <option value="ROLE_READ">Fiat</option>
+            </select>
+            <input type="submit" value="create new user">
+        </form>
+        <hr>
+        <div th:if="${credit!=null}">
+            <p th:text=" 'username: '+${credit.username} "></p>
+        </div>
+    </body>
+</html>
