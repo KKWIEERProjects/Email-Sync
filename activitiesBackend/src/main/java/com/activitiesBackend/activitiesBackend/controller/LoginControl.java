@@ -1,7 +1,9 @@
 package com.activitiesBackend.activitiesBackend.controller;
 
 import com.activitiesBackend.activitiesBackend.Repositories.UserRepo;
+import com.activitiesBackend.activitiesBackend.Services.UserManageService;
 import com.activitiesBackend.activitiesBackend.dto.User;
+import com.activitiesBackend.activitiesBackend.exceptions.UserAlreadyThereException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginControl {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserManageService userManageService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -31,14 +33,14 @@ public class LoginControl {
     }
 
     @PostMapping("/register")
-    public void reg(@RequestParam(value = "username") String username,@RequestParam String password){
+    public void reg(@RequestParam(value = "username") String username,@RequestParam String password) throws UserAlreadyThereException {
         System.out.println("ahsghjasdjahsdk");
-        User user=new User();
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(password));
-        user.setRoles("ROLE_ADMIN");
+        User user= User.builder().username(username).password(passwordEncoder.encode(password)).roles("ROLE_ADMIN").build();
+//        user.setUsername(username);
+//        user.setPassword(passwordEncoder.encode(password));
+//        user.setRoles("ROLE_ADMIN");
         System.out.println(user.toString());
-        userRepo.save(user);
+        userManageService.save(user);
     }
 
 
