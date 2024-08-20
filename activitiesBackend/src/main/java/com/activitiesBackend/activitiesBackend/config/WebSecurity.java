@@ -23,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.io.IOException;
 
@@ -69,7 +70,8 @@ public class WebSecurity {
                         .successHandler(new CustomAuthenticationSuccessHandler())
                         .permitAll()
                 )
-                .logout((logout) -> logout.logoutSuccessUrl("/login")
+                .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/login")
                         .invalidateHttpSession(true)  // Invalidate the session
                         .deleteCookies("JSESSIONID")
                         .permitAll()

@@ -4,6 +4,7 @@ import com.activitiesBackend.activitiesBackend.Services.UserManageService;
 import com.activitiesBackend.activitiesBackend.dto.User;
 import com.activitiesBackend.activitiesBackend.exceptions.UserAlreadyThereException;
 import com.github.javafaker.Faker;
+import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.UUID;
+
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RestController
 @RequestMapping("/user")
 public class AddUserController {
@@ -35,7 +39,8 @@ public class AddUserController {
     @PostMapping("/add")
     public ModelAndView addUser(@RequestParam String roles,
                                 @RequestParam String name,
-                                @RequestParam String email)
+                                @RequestParam String email,
+                                HttpSession session)
             throws UserAlreadyThereException {
         System.out.println(roles);
         Faker faker=new Faker();
@@ -46,12 +51,15 @@ public class AddUserController {
         while(userManageService.checkUsername(username)){
             username=faker.superhero().prefix()+faker.name().firstName()+faker.address().buildingNumber();
         }
+        String password=RandomStringUtils.random(10,"qwertyuiopasdfghjklzxcvbnm1234567890");
         user=User.builder()
+                .id(UUID.randomUUID().toString())
                 .username(username)
-                .password(passwordEncoder.encode( RandomStringUtils.random(10,"qwertyuiopasdfghjklzxcvbnm1234567890")))
+                .password(passwordEncoder.encode( password))
                 .roles(roles)
                 .name(name)
                 .email(email)
+                .admin_id((String)session.getAttribute("id"))
                 .build();
 
         //garbage collection boi
@@ -59,9 +67,11 @@ public class AddUserController {
         username=null;
 
         System.out.println(user);
-      //  userManageService.save(user);
+        userManageService.save(user);
 
-        return new ModelAndView("newUser").addObject("credit",user);
+        return new ModelAndView("newUser")
+                .addObject("credit",user.getUsername())
+                .addObject("password",password);
 
     }
 

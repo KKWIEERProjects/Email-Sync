@@ -12,7 +12,7 @@
         </form>
         <hr>
         <div th:if="${credit!=null}">
-            <p th:text=" 'username: '+${credit.username} "></p>
+            <p th:text=" 'username: '+${credit} + ' password:' + ${password} "></p>
         </div>
     </body>
 </html>
