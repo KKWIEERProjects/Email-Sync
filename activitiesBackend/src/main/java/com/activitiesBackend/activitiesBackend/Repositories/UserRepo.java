@@ -2,7 +2,10 @@ package com.activitiesBackend.activitiesBackend.Repositories;
 
 import com.activitiesBackend.activitiesBackend.dto.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -14,5 +17,8 @@ public interface UserRepo extends JpaRepository<User,String> {
     Optional<User> findById(String s);
 
     Optional<User> findByUsername(String username);
+
+    @Query("SELECT u.username FROM User u WHERE u.admin_id = :adminId")
+    List<String> findUsernamesByAdminId(@Param("adminId") String adminId);
 
 }

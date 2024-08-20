@@ -3,6 +3,8 @@ package com.activitiesBackend.activitiesBackend.Services;
 import com.activitiesBackend.activitiesBackend.dto.User;
 import com.activitiesBackend.activitiesBackend.exceptions.UserAlreadyThereException;
 
+import java.util.List;
+
 public interface UserManageInterface {
 
     public Boolean checkUsername(String username);
@@ -14,4 +16,6 @@ public interface UserManageInterface {
     public Boolean deleteUser(User user);
 
     public Boolean updateUser(User user);
+
+    public List<String> getWorkers(String admin_id);
 }

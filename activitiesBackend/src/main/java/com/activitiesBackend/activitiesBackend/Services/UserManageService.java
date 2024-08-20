@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserManageService implements UserManageInterface{
 
@@ -42,5 +44,10 @@ public class UserManageService implements UserManageInterface{
     @Override
     public Boolean updateUser(User user) {
         return null;
+    }
+
+    @Override
+    public List<String> getWorkers(String admin_id) {
+        return userRepo.findUsernamesByAdminId(admin_id);
     }
 }
