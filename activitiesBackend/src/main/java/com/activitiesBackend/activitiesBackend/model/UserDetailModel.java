@@ -16,11 +16,15 @@ public class UserDetailModel implements UserDetails {
 
     private String password;
 
+    private String id;
+
     private List<GrantedAuthority> authorities;
 
     public UserDetailModel(User user){
+        this.id=user.getId();
         this.username=user.getUsername();
         this.password=user.getPassword();
+
         this.authorities= Stream.of(user.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -39,6 +43,10 @@ public class UserDetailModel implements UserDetails {
     @Override
     public String getUsername() {
         return this.username;
+    }
+
+    public String getId(){
+        return this.id;
     }
 
     @Override

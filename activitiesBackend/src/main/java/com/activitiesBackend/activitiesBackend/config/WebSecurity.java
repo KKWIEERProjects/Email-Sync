@@ -60,7 +60,8 @@ public class WebSecurity {
 
         http.  csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/register"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -90,6 +91,7 @@ class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler
         UserDetailModel userDetails = (UserDetailModel)  authentication.getPrincipal();
         request.getSession().setAttribute("user", authentication.getName());
         request.getSession().setAttribute("fullname", userDetails.getUsername());
+        request.getSession().setAttribute("id",userDetails.getId());
         // Redirect to default URL or any other logic
         response.sendRedirect("/");
     }

@@ -16,20 +16,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @NonNull
     @Column(unique = true)
     private String username;
 
     @Column
     private String password;
 
+    @NonNull
     @Column
     private String roles;
 
+    @NonNull
     @Column
     private String name;
 
     @Column(unique = true)
     private String email;
 
+    @Column
+    private String admin_id;
 
 }
