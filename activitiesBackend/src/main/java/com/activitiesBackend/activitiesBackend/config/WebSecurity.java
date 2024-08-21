@@ -1,36 +1,45 @@
 package com.activitiesBackend.activitiesBackend.config;
 
-import com.activitiesBackend.activitiesBackend.Services.UserServiceImpl;
+import com.activitiesBackend.activitiesBackend.util.UserServiceImpl;
 import com.activitiesBackend.activitiesBackend.model.UserDetailModel;
-import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
-import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.io.IOException;
 
+
+/**
+ * galti se bhi touch maat karna
+ * kuch kiya to chaku lekar piche padunga me
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true,jsr250Enabled = true)
+@PropertySource(
+        ignoreResourceNotFound = false,
+        value = "classpath:dbcofig.properties")
 public class WebSecurity {
+
+//    @Bean
+//    JavaMailSender javaMailSender(){
+//        return new JavaMailSenderImpl();
+//    }
+
 
 
     @Bean
@@ -42,6 +51,7 @@ public class WebSecurity {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -61,8 +71,7 @@ public class WebSecurity {
 
         http.  csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/register"
-                        ).permitAll()
+                        .requestMatchers("/creators").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -84,8 +93,15 @@ public class WebSecurity {
 
 class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-
-
+    /**
+     * session management
+     *
+     * @param request
+     * @param response
+     * @param authentication
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
@@ -95,7 +111,7 @@ class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler
         request.getSession().setAttribute("fullname", userDetails.getUsername());
         request.getSession().setAttribute("id",userDetails.getId());
         // Redirect to default URL or any other logic
-        response.sendRedirect("/");
+        response.sendRedirect("/home");
     }
 
 
