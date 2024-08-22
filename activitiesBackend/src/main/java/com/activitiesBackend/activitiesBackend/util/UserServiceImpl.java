@@ -1,4 +1,4 @@
-package com.activitiesBackend.activitiesBackend.Services;
+package com.activitiesBackend.activitiesBackend.util;
 
 import com.activitiesBackend.activitiesBackend.Repositories.UserRepo;
 import com.activitiesBackend.activitiesBackend.dto.User;
@@ -8,8 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserDetailsService {
