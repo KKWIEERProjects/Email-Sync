@@ -25,7 +25,7 @@ public class AddUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/user")
+    @GetMapping("/add")
     public ModelAndView getUserView(){
         return new ModelAndView("newUser").addObject("credit",null);
     }

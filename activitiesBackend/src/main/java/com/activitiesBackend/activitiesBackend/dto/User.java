@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase;
 
+import java.util.List;
+
 @Entity
 @Table(name="users")
 @Data
@@ -36,5 +38,12 @@ public class User {
 
     @Column
     private String admin_id;
+
+    /**
+     * User ----> user----->template
+     * if admin removed all templates also removed
+     */
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Template> templates;
 
 }
