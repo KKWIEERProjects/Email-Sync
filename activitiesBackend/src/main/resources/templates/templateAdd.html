@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <body>
+
+        <form action="/admin/template/add" method="post">
+            name:<input type="text" name="name">
+            <br>
+            data:<textarea name="data"></textarea>
+            <br>
+            <input type="submit" value="add">
+
+        </form>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Data</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="template : ${templates}">
+                <td th:text="${template.id}">1</td>
+                <td th:text="${template.name}">Template Name</td>
+                <td th:text="${template.data}">Template Data</td>
+            </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
