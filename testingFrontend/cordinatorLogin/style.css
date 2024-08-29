@@ -1,3 +1,215 @@
+
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tablink {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+
+
+}
+
+
+.tablink.active {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+
+}
+
+.tabcontent {
+    display: none;
+    border-radius: 5px;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.accept-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80%;
+
+}
+
+.decline-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 3px;
+    width: 80%;
+}
+
+.manage-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.status-confirmed {
+    color: green;
+    font-weight: bold;
+}
+
+/* Existing styles */
+
+.send-mail-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #f0ad4e;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.add-guest-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 23px 55px;
+    background-color: #f2f2f2; /* Light grey background */
+    border: 1px solid #e0e6ed; /* Light blue border */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.event-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #1a233a;
+}
+
+.event-details {
+    display: flex;
+    gap: 15px; /* Space between details */
+    font-size: 14px;
+    color: #495057;
+}
+
+.event-details span {
+    display: flex;
+    align-items: center;
+}
+
+.event-details i {
+    margin-right: 5px; /* Space between icon and text */
+    color: #6c757d;
+}
+
+/* Example icon styles (you can use font-awesome or any icon library) */
+.icon-calendar::before {
+    content: '\f073'; /* Unicode for calendar icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.icon-clock::before {
+    content: '\f017'; /* Unicode for clock icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.icon-online::before {
+    content: '\f0ac'; /* Unicode for globe icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+
+
+
 /* header Styles */
 .header {
     display: flex;
@@ -6,7 +218,6 @@
   .div {
     background-color: rgba(255, 255, 255, 1);
     border-color: rgba(193, 193, 193, 1);
-    border-bottom-width: 1px;
     display: flex;
     width: 96.8%;
     gap: 20px;
@@ -34,7 +245,7 @@
     }
   }
   .div-3 {
-    background-color: #d9e2f3;
+    background-color: #d9e2f3;   
     border-radius: 50%;
     display: flex;
     width: 47px;
@@ -43,11 +254,41 @@
   .mspv {
     margin: auto 0;
   }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+button.edit, button.delete {
+    border: 2px solid #ccc; /* Border color and thickness */
+    border-radius: 4px;      /* Rounded corners */
+    padding: 8px 12px;       /* Padding around the icon */
+    background-color: white; /* Background color */
+    cursor: pointer;         /* Pointer cursor on hover */
+    outline: none;           /* Remove default outline */
+}
+
+button.edit:hover, button.delete:hover {
+    border-color: #007bff;   /* Border color on hover */
+}
+
+button.edit i, button.delete i {
+    color: #333;             /* Icon color */
+    font-size: 16px;         /* Icon size */
+}
+
+
   .div-4 {
     display: flex;
     gap: 39px;
   }
-  .date {
+  .date{
     color: rgba(57, 57, 57, 1);
     flex-grow: 1;
     margin: auto 0;
@@ -77,7 +318,7 @@
     align-self: stretch;
     margin: auto 0;
   }
-  .line {
+.line {
     border-top: 1px solid #ccc;
     margin: 5px 0;
 }
@@ -90,6 +331,7 @@
 .mspv a{
     color: #007bff;
 }
+  
 
 body {
     margin: 0;
@@ -194,35 +436,8 @@ h1 {
     color: #333;
 }
 
-.event-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-}
 
-.event-actions input {
-    padding: 10px;
-    flex-grow: 1; /* Allows the input to take up all available space */
-    margin-right: 10px; /* Adds some space between the input and the button */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.create-event {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    white-space: nowrap; /* Ensures the button text doesn't wrap */
-}
-
-
-
-/* Style for the form elements */
-
+/*create event style*/
 
 .popup-form {
     display: none; /* Initially hidden */
@@ -319,7 +534,7 @@ h1 {
 .close-btn:hover {
     color: #ccc;
 }
-
+/*=============================================*/
 
 .event-actions {
     display: flex;
@@ -336,8 +551,15 @@ h1 {
     border-radius: 4px;
 }
 
-
-/*=============================================*/
+.create-event {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap; /* Ensures the button text doesn't wrap */
+}
 
 .events-table {
     width: 100%;

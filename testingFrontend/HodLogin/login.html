@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+
+</head>
+<body>
+    <div class="header">
+        <div class="div">
+            <div class="div-2">
+                <div class="div-3"></div>
+                <div class="mspv">
+                    <a href="index.html">MSPV</a>
+                </div>
+            </div>
+            <div class="div-4">
+                <p id="demo"></p>
+
+                <div class="date">
+                    <p id="demo"></p>
+                </div>
+                
+                <div class="div-5">
+
+
+                    <div class="action">
+                        <div class="profile">
+
+                            <button type="button" class="noti" title="Notification"
+                                onclick="toggleNotificationPopup();">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="user" title="User" ">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            </button>
+
+
+                            <div class="notification-popup">
+                                <h4>Recent Notifications</h4>
+                                <ul>
+                                    <li>New event: Annual Science Fair on September 15th</li>
+                                    <li>Reminder: Faculty Meeting on August 20th at 10 AM</li>
+                                    <li>Workshop: Effective Study Techniques on August 25th</li>
+                                    <li>Deadline: Submit research papers by August 30th</li>
+                                    <li>Notice: Campus Clean-Up Day on September 5th</li>
+                                    <li>Event: Freshers' Welcome Party on September 1st</li>
+                                </ul>
+                            </div>
+
+
+                            <div class="menu">
+                                <h3>
+                                    Hod Admin
+                                    <div>
+                                        MCA Department
+                                    </div>
+                                </h3>
+                                <ul>
+                                    <li>
+                                        <span class="material-icons icons-size">person</span>
+                                        <a href="event.html">Hod admin</a>
+                                    </li>
+
+                                    <li>
+                                        <span class="material-icons icons-size">person</span>
+                                        <a href="coordinator.html">Co-ordinator admin</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <hr class="line">
+    </div>
+    <main class="main-content">
+        <div class="left-section">
+            <!-- Placeholder for image or additional content -->
+        </div>
+        <div class="right-section">
+            <h2>Login Here</h2>
+            <p>Sign in to Manage and Participate in College Events</p>
+            
+            <form class="login-form">
+                <label for="dropdown">Sign in as:</label>
+                <select id="dropdown" name="dropdown">
+                    <option value="item1">HOD(Admin)</option>
+                    <option value="item1">STAFF(Coordinator)</option>
+                    <option value="item1">STUDENTS</option>
+
+                    <!-- Add more options as needed -->
+                </select>
+
+                <input type="text" id="user-id" name="user-id" placeholder="User ID">
+                <input type="password" id="password" name="password" placeholder="Password">
+                
+                <button type="submit">Sign in</button>
+
+                <!-- <div class="divider">or</div>
+
+                <button type="button" class="google-signin">Sign in with Google</button> -->
+            </form>
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K. K Wagh Event Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="div">
+          <div class="div-2">
+            <div class="div-3"></div>
+            <div class="mspv">
+                <a href="index.html">MSPV</a>
+              </div>
+          </div>
+          <div class="div-4">
+            <div class="date">11th July 2024 | 10:45 am</div>
+            <div class="div-5">
+                <div class="mspv">
+                    <a href="index.html"></a>
+                </div>
+                <a href="#"><i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
+                <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
+                
+            </div>
+          </div>
+        </div>
+        </div>
+      <div><hr class="line"></div>  
+        
+
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="profile-pic"></div>
+                <h2>Mrs V.C. BAGAL</h2>
+                <p>HOD (Admin)</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="event.html"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                        Events</a></li>
+                    <li><a href="coordinator.html" id="coordinators-link"><i class="fa fa-address-book-o" style="font-size:26px; padding-right:30px"></i>
+                        Templates</a></li>
+                </ul>
+            </nav>
+            
+            <button class="logout">Log Out</button>
+        </aside>
+        <hr class="sidebar-divider">
+
+        <main class="content">
+            <div class="header">
+                <div class="breadcrumb">
+                    <p>Home / Events</p>
+                </div>
+                <div class="timestamp">
+                    <p>11th July 2024 | 10:45 am</p>
+                </div>
+            </div>
+            <h1>Guest</h1>
+            <div class="event-actions">
+                <input type="text" placeholder="Search using name or type">
+
+                <button class="tablink" onclick="openTab(event, 'Guests')">Add Guests</button>
+
+                <div class="overlay" id="overlay"></div>
+                <div class="popup-form" id="popupForm">
+
+                    <button type="button" id="closePopup" class="close-btn">×</button>
+                    
+                        <h2>Create New Event</h2>
+                
+
+                    <form id="event-form">
+                        <label for="event-name">Event Name:</label>
+                        <input type="text" id="event-name" name="event-name" required>
+                        <br>
+                        <label for="event-co">Select Co-ordinator:</label>
+                        <select id="event-name" name="Co-ordinator" required>
+                            <option value="" disabled selected>Select Co-ordinator</option>
+                            <option value="teacher1">Co-ordinator 1</option>
+                            <option value="teacher2">Co-ordinator 2</option>
+                            <option value="teacher3">Co-ordinator 3</option>
+                            <option value="teacher4">Co-ordinator 4</option>
+                        </select>
+                        <br>
+                        <label for="event-date">Event Date:</label>
+                        <input type="date" id="event-date" name="event-date" required>
+                        <br>
+                        
+                        <label for="event-name">Event Description:</label>
+                        <input type="text1" id="event-name" name="event-name" required>
+                        <br>
+                        <button type="submit">Add Event</button>
+                        <button type="button" id="closePopup">Close</button>
+                    </form>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="tabs">
+                    <button class="tablink active" onclick="openTab(event, 'Assigned')">Assigned</button>
+                    <button class="tablink" onclick="openTab(event, 'Accepted')">Accepted</button>
+                    <button class="tablink" onclick="openTab(event, 'Declined')">Declined</button>
+                    
+                </div>
+    
+                <div id="Assigned" class="tabcontent" style="display:block;">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Event Name</th>
+                            <th>Assigned By</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Software Development Bootcamp</td>
+                            <td>Dr. V. C. Bagal</td>
+                            <td>An intensive bootcamp covering modern software development practices, tools, and methodologies. Instructions for Coordinators: Prepare the lab and distribute materials.</td>
+                            <td><button class="accept-btn">Accept</button> <button class="decline-btn">Decline</button></td>
+                        </tr>
+                    </table>
+                </div>
+    
+                <div id="Accepted" class="tabcontent">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Event Name</th>
+                            <th>Assigned By</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Software Development Bootcamp</td>
+                            <td>Dr. V. C. Bagal</td>
+                            <td>An intensive bootcamp covering modern software development practices, tools, and methodologies. Instructions for Coordinators: Prepare the lab and distribute materials.</td>
+                            <td><span class="status-confirmed">Confirmed</span></td>
+                            <td><button class="manage-btn">Manage Event</button></td>
+                        </tr>
+                    </table>
+                </div>
+    
+                <div id="Declined" class="tabcontent">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Event Name</th>
+                            <th>Assigned By</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Software Development Bootcamp</td>
+                            <td>Dr. V. C. Bagal</td>
+                            <td>An intensive bootcamp covering modern software development practices, tools, and methodologies. Instructions for Coordinators: Prepare the lab and distribute materials.</td>
+                        </tr>
+                    </table>
+                </div>
+    
+                <div id="Guests" class="tabcontent">
+                    <div class="event-header">
+                        <h3>Software Development Bootcamp</h3>
+                        <div class="event-details">
+                            <span><i class="fa fa-calendar"></i> 10th July 2024</span>
+                            <span><i class="fa fa-clock"></i> 09:00 AM</span>
+                            <span><i class="fa-solid fa-video"></i> Online</span>
+                        </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Guest Name</th>
+                            <th>Designation</th>
+                            <th>Organization</th>
+                            <th>Email</th>
+                            <th>Contact No</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>ABC</td>
+                            <td>Project Manager</td>
+                            <td>TCS</td>
+                            <td>abc@gmail.com</td>
+                            <td>9435737485</td>
+                            <td>
+                                <button class="send-mail-btn">Send Mail</button>
+                                <button class="edit-btn">Edit</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="add-guest-btn">Add Guests</button>
+                </div>
+            </div>
+        </div>
+    
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Templates</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h2>Mrs Archana Rane</h2>
+                <span>11th July 2024 | 10:45 AM</span>
+            </div>
+            <div class="tabs">
+                <button class="tablink active" onclick="openTab(event, 'Assigned')">Assigned</button>
+                <button class="tablink" onclick="openTab(event, 'Accepted')">Accepted</button>
+                <button class="tablink" onclick="openTab(event, 'Declined')">Declined</button>
+                <button class="tablink" onclick="openTab(event, 'Guests')">Guests</button>
+            </div>
+
+            <div id="Assigned" class="tabcontent" style="display:block;">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Name</th>
+                        <th>Assigned By</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Software Development Bootcamp</td>
+                        <td>Dr. V. C. Bagal</td>
+                        <td>An intensive bootcamp covering modern software development practices, tools, and methodologies. Instructions for Coordinators: Prepare the lab and distribute materials.</td>
+                        <td><button class="accept-btn">Accept</button> <button class="decline-btn">Decline</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="Accepted" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Name</th>
+                        <th>Assigned By</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Software Development Bootcamp</td>
+                        <td>Dr. V. C. Bagal</td>
+                        <td>An intensive bootcamp covering modern software development practices, tools, and methodologies. Instructions for Coordinators: Prepare the lab and distribute materials.</td>
+                        <td><span class="status-confirmed">Confirmed</span></td>
+                        <td><button class="manage-btn">Manage Event</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="Declined" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Name</th>
+                        <th>Assigned By</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Software Development Bootcamp</td>
+                        <td>Dr. V. C. Bagal</td>
+                        <td>An intensive bootcamp covering modern software development practices, tools, and methodologies. Instructions for Coordinators: Prepare the lab and distribute materials.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="Guests" class="tabcontent">
+                <h3>Software Development Bootcamp</h3>
+                <p>Date: 10th July 2024 | Time: 09:00 AM | Mode: Online</p>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Guest Name</th>
+                        <th>Designation</th>
+                        <th>Organization</th>
+                        <th>Email</th>
+                        <th>Contact No</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>ABC</td>
+                        <td>Project Manager</td>
+                        <td>TCS</td>
+                        <td>abc@gmail.com</td>
+                        <td>9435737485</td>
+                        <td>
+                            <button class="send-mail-btn">Send Mail</button>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+                <button class="add-guest-btn">Add Guests</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->

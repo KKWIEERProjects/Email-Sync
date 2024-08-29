@@ -7,6 +7,8 @@
     <title>Co-ordinator</title>
     <link rel="stylesheet" href="coordinator.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 </head>
 
@@ -20,25 +22,76 @@
                   </div>
             </div>
             <div class="div-4">
-                <div class="date">11th July 2024 | 10:45 am</div>
+                
+                <div class="date">
+                    <p id="demo"></p>
+                </div>
+                
                 <div class="div-5">
 
-                    <div class="mspv">
-                        <a href="index.html"></a>
+                    <div class="action">
+                        <div class="profile" >
+    
+                            <button type="button" class="noti" title="Notification" onclick="toggleNotificationPopup();" >
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="user" title="User" onclick="menuToggle();" >
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            </button>
+                            
+                            <!-- <a href="#"><i class="fa fa-bell " aria-hidden="true"   style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
+                            <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
+                            -->
+
+                            <div class="notification-popup">
+                                <h4>Recent Notifications</h4>
+                                <ul>
+                                    <li>New event: Annual Science Fair on September 15th</li>
+                                    <li>Reminder: Faculty Meeting on August 20th at 10 AM</li>
+                                    <li>Workshop: Effective Study Techniques on August 25th</li>
+                                    <li>Deadline: Submit research papers by August 30th</li>
+                                    <li>Notice: Campus Clean-Up Day on September 5th</li>
+                                    <li>Event: Freshers' Welcome Party on September 1st</li>
+                                </ul>
+                            </div>
+                       
+                
+                        <div class="menu">
+                            <h3>
+                              Hod Admin
+                                <div>
+                                    MCA Department
+                                </div>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="event.html">Hod admin</a>
+                                </li>
+                                
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="coordinator.html">Co-ordinator admin</a>
+                                </li>
+                               
+                            </ul>
+                        </div>
                     </div>
-                    <a href="#"><i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
-                    <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
-                    
-
-
+    
+    
                 </div>
+    
+    
+                    <!-- <i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i> -->
+                    <!-- <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a> -->
+                    
+                    
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-
-    <div>
-        <hr class="line">
-    </div>
+            </div>
+          <div><hr class="line"></div>  
+            
 
     <div class="container">
         <aside class="sidebar">
@@ -66,9 +119,11 @@
                 <div class="breadcrumb">
                     <p>Home / Co-ordinator</p>
                 </div>
-                <div class="timestamp">
-                    <p>11th July 2024 | 10:45 am</p>
+
+                <div class="date">
+                    <p id="demo1"></p>
                 </div>
+                
             </div>
             <h1>Assigned Co-ordinator</h1>
             <div class="event-actions">

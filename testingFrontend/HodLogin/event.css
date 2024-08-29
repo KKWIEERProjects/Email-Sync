@@ -1,7 +1,233 @@
+/* admin Styles */
+
+.action {
+    position: fixed;
+    right: 30px;
+    top: 16px;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    
+}
+
+.action .profile {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    cursor: pointer;
+}
+
+.action .profile a {
+    text-decoration: none; 
+}
+
+.action .profile i {
+    font-size: 22px;
+    color: #007bff;
+    border-radius: 5px; 
+    padding: 4px; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* .action .profile i.fa-user-circle-o {
+    font-size: 27px;
+    padding: 5px; 
+} */
+
+/* .action .profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+.action .menu{
+    background-color:#fff;
+    box-sizing:0 5px 25px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    padding: 10px 20px;
+    position: absolute;
+    right: -10px;
+    width: 200px;
+    transition: 0.3s;
+    top: 120px;
+    visibility: hidden;
+    opacity: 0;
+}
+.action .menu.active{
+    opacity: 1;
+    top: 80px;
+    visibility: visible;
+}
+/* .action .menu::before{
+    background-color:#fff;
+    content: '';
+    height: 20px;
+    position: absolute;
+    right: 30px;
+    transform:rotate(45deg);
+    top:-5px;
+    width: 20px;
+} */
+/* Menu Container */
+.menu {
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    background-color: #f1f3f8; 
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 250px; 
+    z-index: 1000; 
+    padding: 7px; 
+    font-family: Arial, sans-serif; 
+}
+
+/* Menu Title */
+.menu h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #333; 
+    border-bottom: 2px solid #333; 
+    padding-bottom: 8px; 
+    margin-bottom: 10px; 
+}
+
+/* Department Info */
+.menu div {
+    font-size: 14px;
+    color: #007bff; 
+    margin-bottom: 15px; 
+}
+/* Menu List */
+.menu ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+/* List Items */
+.menu li {
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    padding: 10px 0; 
+    border-bottom: 1px solid #ddd; 
+}
+
+.menu li:last-child {
+    border-bottom: none; /
+}
+
+/* List Item Text */
+.menu a {
+    color: #333; 
+    text-decoration: none; 
+    margin-left: 10px; 
+    font-size: 15px; 
+    line-height: 1.5; 
+    display: block; 
+}
+
+/* Icons */
+.menu .material-icons {
+    font-size: 20px; 
+    color: #333; 
+    margin-right: 10px; 
+}
+
+
+button.edit, button.delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+button.noti, button.user {
+    border: 2px solid #ccc; 
+    border-radius: 50%;     
+    padding: 10px 12px;       
+    background-color: white; 
+    cursor: pointer;         
+    outline: none;           
+}
+
+button.noti:hover, button.user:hover {
+    border-color: #007bff;   
+}
+
+button.noti i, button.user i {
+    color: #333;       
+    font-size: 16px;  
+}
+
+
+
+/* Notification Popup Styling */
+.notification-popup {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    z-index: 1000;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.notification-popup h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.notification-popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-popup li {
+    align-items: self-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
+.notification-popup li:last-child {
+    border-bottom: none;
+}
+/*===============*/
+
+
+
+
+
+
 /* header Styles */
 .header {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   .div {
     background-color: rgba(255, 255, 255, 1);
@@ -53,27 +279,13 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
-button.edit, button.delete {
-    border: 2px solid #ccc; /* Border color and thickness */
-    border-radius: 4px;      /* Rounded corners */
-    padding: 8px 12px;       /* Padding around the icon */
-    background-color: white; /* Background color */
-    cursor: pointer;         /* Pointer cursor on hover */
-    outline: none;           /* Remove default outline */
+
+.mspv a{
+    color: #007bff;
 }
-
-button.edit:hover, button.delete:hover {
-    border-color: #007bff;   /* Border color on hover */
-}
-
-button.edit i, button.delete i {
-    color: #333;             /* Icon color */
-    font-size: 16px;         /* Icon size */
-}
-
-
   .div-4 {
     display: flex;
+    margin-right: 150px;
     gap: 39px;
   }
   .date{
@@ -88,38 +300,18 @@ button.edit i, button.delete i {
     gap: 24px;
     justify-content: start;
   }
-  .img {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 61px;
-    border-radius: 0px 0px 0px 0px;
-    align-self: stretch;
-    margin: auto 0;
-  }
-  .img-2 {
-    aspect-ratio: 1.61;
-    object-fit: contain;
-    object-position: center;
-    width: 90px;
-    border-radius: 0px 0px 0px 0px;
-    align-self: stretch;
-    margin: auto 0;
-  }
+
 .line {
     border-top: 1px solid #ccc;
     margin: 5px 0;
 }
 
 .sidebar-divider {
-    border-top: 1px solid #ccc; /* Adjust color and thickness as needed */
+    border-top: 1px solid #ccc; 
     margin: 0 5px;
 
   }
-.mspv a{
-    color: #007bff;
-}
-  
+
 
 body {
     margin: 0;
@@ -228,7 +420,7 @@ h1 {
 /*create event style*/
 
 .popup-form {
-    display: none; /* Initially hidden */
+    display: none; 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -333,8 +525,8 @@ h1 {
 
 .event-actions input {
     padding: 10px;
-    flex-grow: 1; /* Allows the input to take up all available space */
-    margin-right: 10px; /* Adds some space between the input and the button */
+    flex-grow: 1; 
+    margin-right: 10px; 
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -350,7 +542,7 @@ h1 {
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    white-space: nowrap; /* Ensures the button text doesn't wrap */
+    white-space: nowrap;
 }
 
 .events-table {
@@ -365,10 +557,9 @@ h1 {
     text-align: left;
     border-bottom: 1px solid #ccc;
     color: #333;
-    white-space: nowrap; /* Prevents text wrapping */
-    overflow: hidden;    /* Ensures content doesn't overflow outside of the cell */
-    text-overflow: ellipsis; /* Adds ellipses to truncated text */
-    max-width: 150px;    /* Adjust as needed to fit your design */
+    overflow: hidden;    
+    text-overflow: ellipsis; 
+    max-width: 150px;    
 }
 
 .events-table th {
@@ -405,4 +596,21 @@ button.edit:hover {
 
 button.delete:hover {
     color: #dc3545;
+}
+button.edit, button.delete {
+    border: 2px solid #ccc; 
+    border-radius: 4px;    
+    padding: 8px 12px;       
+    background-color: white;
+    cursor: pointer;         
+    outline: none;         
+}
+
+button.edit:hover, button.delete:hover {
+    border-color: #007bff;   
+}
+
+button.edit i, button.delete i {
+    color: #333;             
+    font-size: 16px;         
 }
