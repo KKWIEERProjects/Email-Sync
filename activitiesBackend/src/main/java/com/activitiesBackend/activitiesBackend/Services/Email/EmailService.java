@@ -11,32 +11,32 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 
-    @Autowired
-    private JavaMailSender mailSender;
+//    @Autowired
+//    private JavaMailSender mailSender;
 
     @Value("${email}")
     private String sendEmail;
 
     public void sendEmail(String email,String subject,String content) throws Exception {
-        try{
+        //try{
            // JavaMailSenderImpl mailSender=new JavaMailSenderImpl();
 
-            MimeMessage message=mailSender.createMimeMessage();
-            MimeMessageHelper helper=new MimeMessageHelper(message);
-
-            helper.setFrom(sendEmail);
-            helper.setTo(email);
-
-            helper.setSubject(subject);
-            helper.setText(content,true);
-
-            mailSender.send(message);
-
-            mailSender=null;
-
-        }catch (Exception ex){
-            throw new Exception(ex.toString());
-        }
+//            MimeMessage message=mailSender.createMimeMessage();
+//            MimeMessageHelper helper=new MimeMessageHelper(message);
+//
+//            helper.setFrom(sendEmail);
+//            helper.setTo(email);
+//
+//            helper.setSubject(subject);
+//            helper.setText(content,true);
+//
+//            mailSender.send(message);
+//
+//            mailSender=null;
+//
+//        }catch (Exception ex){
+//            throw new Exception(ex.toString());
+//        }
 
     }
 
