@@ -6,6 +6,8 @@ import com.activitiesBackend.activitiesBackend.model.Notifications.StatusIQ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HistoryService {
 
@@ -17,9 +19,14 @@ public class HistoryService {
                 .event(statusIQ.getEvent())
                 .name(statusIQ.getName())
                 .status(statusIQ.getStatus())
+                .coo(statusIQ.getCoo())
                 .build();
 
         historyRepo.save(history);
+    }
+
+    public List<History> getHistory(String coo){
+        return historyRepo.findByCoordinator(coo);
     }
 
 }

@@ -7,6 +7,8 @@ import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StructureService {
 
@@ -44,6 +46,10 @@ public class StructureService {
 
     public void remove(Structure structure){
         structureRepo.delete(structure);
+    }
+
+    public List<Structure> getAllStructure(String coo){
+        return structureRepo.findByCoordinator(coo);
     }
 
 

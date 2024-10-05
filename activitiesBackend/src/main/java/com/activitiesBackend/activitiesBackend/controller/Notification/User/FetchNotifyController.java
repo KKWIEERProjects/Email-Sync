@@ -7,10 +7,12 @@ import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -24,26 +26,37 @@ public class FetchNotifyController {
     private StructureService structureService;
 
     @GetMapping("/notify")
-    public List<Assign> getNotification(HttpSession session){
+    public ModelAndView getNotification(HttpSession session){
         String user=(String) session.getAttribute("user");
 
         //assignService.getPost(user);
         //user=null;
-        return assignService.getPost(user);
-
+//        return assignService.getPost(user);
+        return new ModelAndView("notify/notify").addObject("posts",assignService.getPost(user));
     }
 
-
+    @GetMapping("/structure")
+    public ModelAndView getStructure(@RequestParam String id){
+        return new ModelAndView("structure/structure").addObject("notify",assignService.getPostById(id));
+    }
     @PostMapping("/structure")
-    public Structure setStructure(@RequestParam String id,
+    public ModelAndView setStructure(@RequestParam String id,
                                   @RequestParam String name,
                                   @RequestParam String venue,
                                   HttpSession session){
         Assign assign=assignService.getPostById(id);
         String sid=structureService.save(assign,name,venue,(String) session.getAttribute("user"));
         System.out.println("sid"+sid);
-        return structureService.getStructure(sid);
+        return new ModelAndView("redirect:/allsend");
 
     }
+
+    @GetMapping("/allsend")
+    public ModelAndView getAllStructure(HttpSession session){
+        String coo=(String) session.getAttribute("user");
+        return new ModelAndView("structure/allStructure").addObject("structures",structureService.getAllStructure(coo));
+    }
+
+
 
 }

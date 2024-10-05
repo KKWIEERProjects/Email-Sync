@@ -1,6 +1,5 @@
 package com.activitiesBackend.activitiesBackend.controller.Notification.User;
 
-import com.activitiesBackend.activitiesBackend.Repositories.AssignRepos.HistoryRepo;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.AssignService;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.HistoryService;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.StatusService;
@@ -13,11 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class EmailSend {
+public class EmailSendController {
 
     @Autowired
     private AssignService assignService;
@@ -40,7 +38,7 @@ public class EmailSend {
      * @return
      */
     @PostMapping("/send")
-    public List<StatusIQ> sendEmail(@RequestParam String id, HttpSession session){
+    public ModelAndView sendEmail(@RequestParam String id, HttpSession session){
 
         Structure structure=structureService.getStructure(id);
 
@@ -48,18 +46,26 @@ public class EmailSend {
         structureService.remove(structure);
         assignService.removeById(structure.getId());
 
-       return statusService.get((String) session.getAttribute("user"));
+       return new ModelAndView("redirect:/allstatus");
 
     }
 
-    @GetMapping("/update")
-    public void update(@RequestParam String id,@RequestParam String status){
+    @GetMapping("/allstatus")
+    public ModelAndView getAllStatus(HttpSession session){
+        return new ModelAndView("status/status").addObject("status",statusService.get((String) session.getAttribute("user")));
+    }
 
+    @PostMapping("/update")
+    public ModelAndView update(@RequestParam String id,@RequestParam String status){
+        System.out.println(status);
         StatusIQ statusIQ=statusService.updateStatus(id,status);
-        if(status.equals("accepted") || status.equals("rejected")){
+        if(status.equals("Accepted") || status.equals("Rejected")){
             historyService.record(statusIQ);
+            System.out.println(id);
             statusService.remove(id);
         }
+
+        return new ModelAndView("redirect:/history");
 
 
     }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>List of Users</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Event</th>
+        <th>Status</th>
+        <th>Coordinator</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf iteration over users to populate table rows -->
+    <tr th:each="hit : ${hits}">
+        <td th:text="${hit.getName()}"></td>
+        <td th:text="${hit.getEvent()}"></td>
+        <td th:text="${hit.getStatus()}"></td>
+        <td th:text="${hit.getCoo()}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

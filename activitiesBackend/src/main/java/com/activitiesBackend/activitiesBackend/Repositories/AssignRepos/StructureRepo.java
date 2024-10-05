@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface StructureRepo extends JpaRepository<Structure,String> {
 
-
+    @Query("SELECT s FROM Structure s WHERE s.coo = :coo")
+    List<Structure> findByCoordinator(@Param("coo") String coo);
 
 }

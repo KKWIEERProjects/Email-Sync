@@ -1,0 +1,122 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <style>
+
+            /* Navigation Bar Styling */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a,
+.nav-links button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+    background-color: #575757;
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#notificationList {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 0;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#notificationList li {
+    color: #333;
+    padding: 10px;
+    text-align: left;
+    list-style-type: none;
+    border-bottom: 1px solid #eee;
+}
+
+#notificationList li:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#notificationList li:last-child {
+    border-bottom: none;
+}
+
+        </style>
+    </head>
+    <body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <!-- Notify Dropdown -->
+                <div class="dropdown">
+                    <button type="button" id="notifyButton">Notify</button>
+
+                    <!-- Dropdown Notifications -->
+                    <ul id="notificationList" style="display: none;" th:if="${notifications != null}" th:each="notification : ${notifications}">
+                        <li th:text="${notification.event}"></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Form Submission</h1>
+    <form th:action="@{/admin/assign}" method="post">
+
+        <!-- Name Field -->
+        <label for="name">Event:</label>
+        <input type="text" id="name" name="event" required>
+        <br>
+
+        <!-- COO Dropdown -->
+        <label for="coo">COORDINATORS:</label>
+        <select id="coo" name="coo">
+            <option value="" disabled selected>Select a COO</option>
+            <option th:each="coo : ${coos}" th:value="${coo}" th:text="${coo}"></option>
+        </select>
+        <br>
+
+        <!-- Info Field -->
+        <label for="info">Info:</label>
+        <textarea id="info" name="info" required></textarea>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    </body>
+</html>

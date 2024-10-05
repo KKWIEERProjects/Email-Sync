@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 @Service
 public class StatusService {
 
@@ -32,7 +33,7 @@ public class StatusService {
         return statusRepo.findByCoordinator(name);
     }
 
-    @Transactional
+
     public StatusIQ updateStatus(String id,String status){
 
         statusRepo.statusById(id,status);

@@ -26,4 +26,7 @@ public class History {
     @Column
     private String status;
 
+    @Column
+    private String coo;
+
 }

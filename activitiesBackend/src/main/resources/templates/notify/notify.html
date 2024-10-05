@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>List of Users</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Event</th>
+        <th>Information</th>
+        <th>Structure it</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf iteration over users to populate table rows -->
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.getEvent()}"></td>
+        <td th:text="${post.getInfo()}"></td>
+        <td>
+            <form th:action="@{/structure}" method="get">
+                <button type="submit" th:value="${post.getId()}" name="id">click</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

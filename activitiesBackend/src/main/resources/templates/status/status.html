@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Table</title>
+    <script>
+        function submitForm() {
+            document.getElementById("eventForm").submit();
+        }
+    </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>List of Users</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Event</th>
+        <th>Name</th>
+        <th>Info</th>
+        <th>Status</th>
+        <th>Change Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf iteration over users to populate table rows -->
+    <tr th:each="stat : ${status}">
+        <td th:text="${stat.getEvent()}"></td>
+        <td th:text="${stat.getName()}"></td>
+        <td th:text="${stat.getInfo()}"></td>
+        <td th:text="${stat.getStatus()}"></td>
+       <td> <form id="eventForm" action="#" th:action="@{/update}"  method="post">
+            <input type="hidden" name="id" th:value="${stat.getId()}">
+            <label for="status">Choose Status:</label>
+            <select id="status" name="status" onchange="submitForm()">
+
+                    <option value="Pending">Pending</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Rejected">Rejected</option>
+
+            </select>
+
+       </form></td>
+        <td th:text="${stat.getCoo()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

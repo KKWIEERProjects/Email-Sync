@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Event Form</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Event Information Form</h2>
+
+<form  th:action="@{/structure}"  method="post">
+
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter guest name">
+
+    <label for="event">Venue:</label>
+    <input type="text" id="event" name="venue" placeholder="Enter event details">
+
+    <button type="submit" name="id" th:value="${notify.getId()}">send</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Event</th>
+        <th>Information</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf iteration over users to populate table rows -->
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.getEvent()}"></td>
+        <td th:text="${post.getInfo()}"></td>
+        <td>
+            <form th:action="@{/structure}" method="get">
+                <button type="submit" th:value="${post.getId()}" name="id">click</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
