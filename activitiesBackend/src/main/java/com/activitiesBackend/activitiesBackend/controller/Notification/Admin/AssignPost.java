@@ -27,7 +27,7 @@ public class AssignPost {
     @GetMapping("/admin/assign")
     public ModelAndView getAssign(HttpSession session){
 
-        return new ModelAndView("notify/assign").addObject("coos",userManageService.getWorkers(
+        return new ModelAndView("admin/assign").addObject("coos",userManageService.getWorkers(
                 (String) session.getAttribute("id")
         )).addObject("notifications",assignService.getPost(
                 (String) session.getAttribute("user")
@@ -49,7 +49,7 @@ public class AssignPost {
 
         assignService.setPost(event, coo, info);
 
-        return new ModelAndView("notify/assign");
+        return new ModelAndView("admin/assign");
 
     }
 
