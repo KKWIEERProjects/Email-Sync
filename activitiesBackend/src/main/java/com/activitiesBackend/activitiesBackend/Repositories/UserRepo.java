@@ -20,7 +20,7 @@ public interface UserRepo extends JpaRepository<User,String> {
 
     Optional<User> findByUsername(String username);
 
-    @Query("SELECT u.username FROM User u WHERE u.admin_id = :adminId")
-    List<String> findUsernamesByAdminId(@Param("adminId") String adminId);
+    @Query("SELECT u FROM User u WHERE u.admin_id = :adminId")
+    List<User> findUsernamesByAdminId(@Param("adminId") String adminId);
 
 }

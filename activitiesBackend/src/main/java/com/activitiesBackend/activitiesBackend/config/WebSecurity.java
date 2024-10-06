@@ -113,7 +113,7 @@ class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler
         request.getSession().setAttribute("fullname", userDetails.getUsername());
         request.getSession().setAttribute("id",userDetails.getId());
         // Redirect to default URL or any other logic
-        response.sendRedirect("/home");
+        response.sendRedirect("/notify");
     }
 
 

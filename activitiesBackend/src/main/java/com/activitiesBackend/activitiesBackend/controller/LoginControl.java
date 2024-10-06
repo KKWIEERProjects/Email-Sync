@@ -23,7 +23,7 @@ public class LoginControl {
 
     @GetMapping("/login")
     public ModelAndView modelAndView(){
-        System.out.println("jdjrhsdfj");
+      //  System.out.println("jdjrhsdfj");
         return new ModelAndView("login");
     }
 

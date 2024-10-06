@@ -17,5 +17,5 @@ public interface UserManageInterface {
 
     public Boolean updateUser(User user);
 
-    public List<String> getWorkers(String admin_id);
+    public List<User> getWorkers(String admin_id);
 }

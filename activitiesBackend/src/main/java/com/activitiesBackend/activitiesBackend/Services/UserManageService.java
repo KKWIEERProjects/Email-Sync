@@ -6,11 +6,9 @@ import com.activitiesBackend.activitiesBackend.dto.User;
 import com.activitiesBackend.activitiesBackend.exceptions.UserAlreadyThereException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Transactional
 @Service
@@ -51,7 +49,7 @@ public class UserManageService implements UserManageInterface{
     }
 
     @Override
-    public List<String> getWorkers(String admin_id) {
+    public List<User> getWorkers(String admin_id) {
         return userRepo.findUsernamesByAdminId(admin_id);
     }
 

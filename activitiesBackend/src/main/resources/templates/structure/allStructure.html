@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>User Table</title>
     <style>
@@ -23,7 +23,13 @@
     </style>
 </head>
 <body>
-
+<nav>
+    <a th:href="@{/home}">Home</a> |
+    <a th:href="@{/notify}">notify</a> |
+    <a th:href="@{/allsend}">structure</a> |
+    <a th:href="@{/allstatus}">status</a> |
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/assign}">admin</a>
+</nav>
 <h1>List of Users</h1>
 <span th:if="${structures != null}" >
 

@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
     <head>
         <style>
 
@@ -75,23 +75,12 @@
         </style>
     </head>
     <body>
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li>
-                <!-- Notify Dropdown -->
-                <div class="dropdown">
-                    <button type="button" id="notifyButton">Notify</button>
-
-                    <!-- Dropdown Notifications -->
-                    <ul id="notificationList" style="display: none;" th:if="${notifications != null}" th:each="notification : ${notifications}">
-                        <li th:text="${notification.event}"></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
+    <nav>
+        <a th:href="@{/home}">Home</a> |
+        <a th:href="@{/notify}">notify</a> |
+        <a th:href="@{/allsend}">structure</a> |
+        <a th:href="@{/allstatus}">status</a> |
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/assign}">admin</a>
     </nav>
 
     <h1>Form Submission</h1>
@@ -106,7 +95,7 @@
         <label for="coo">COORDINATORS:</label>
         <select id="coo" name="coo">
             <option value="" disabled selected>Select a COO</option>
-            <option th:each="coo : ${coos}" th:value="${coo}" th:text="${coo}"></option>
+            <option th:each="coo : ${coos}" th:value="${coo.getUsername()}" th:text="${coo.getName()}"></option>
         </select>
         <br>
 

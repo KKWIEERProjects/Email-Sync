@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Admin Control</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>List of Users</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>roles</th>
+            <th>email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thymeleaf iteration over users to populate table rows -->
+        <tr th:each="coo : ${coos}">
+            <td th:text="${coo.getName()}"></td>
+            <td th:text="${coo.getUsername()}"></td>
+            <td th:text="${coo.getRoles()}"></td>
+            <td th:text="${coo.getEmail()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    </body>
+
+</html>

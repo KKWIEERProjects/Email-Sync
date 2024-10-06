@@ -1,7 +1,7 @@
 package com.activitiesBackend.activitiesBackend.controller;
 
 import com.activitiesBackend.activitiesBackend.Services.UserManageService;
-import jakarta.servlet.http.HttpServletRequest;
+import com.activitiesBackend.activitiesBackend.dto.User;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class UserController {
     private UserManageService userManageService;
 
     @GetMapping("/manager")
-    public ResponseEntity<List<String>> getAllCoordinators(HttpSession session){
+    public ResponseEntity<List<User>> getAllCoordinators(HttpSession session){
         String id=(String) session.getAttribute("id");
 
         return ResponseEntity.status(HttpStatus.OK).body(userManageService.getWorkers(id));

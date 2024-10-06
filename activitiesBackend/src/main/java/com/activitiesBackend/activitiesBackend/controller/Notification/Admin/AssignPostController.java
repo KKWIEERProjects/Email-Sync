@@ -2,7 +2,6 @@ package com.activitiesBackend.activitiesBackend.controller.Notification.Admin;
 
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.AssignService;
 import com.activitiesBackend.activitiesBackend.Services.UserManageService;
-import com.activitiesBackend.activitiesBackend.model.Notifications.Assign;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,11 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RestController
-public class AssignPost {
+public class AssignPostController {
 
     @Autowired
     private AssignService assignService;
