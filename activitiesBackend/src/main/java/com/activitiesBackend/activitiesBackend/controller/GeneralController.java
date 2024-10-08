@@ -34,10 +34,12 @@ public class GeneralController {
         return modelAndView.addObject("name",(String) session.getAttribute("user"));
     }
 
+    /**
     @GetMapping("/send")
     public void getEmail() throws Exception {
         String content="<html> <body> <h1>hello world!</h1><p>hello</p> </body></html>";
         emailService.sendEmail(email,"test",content);
         content=null;
     }
+    **/
 }

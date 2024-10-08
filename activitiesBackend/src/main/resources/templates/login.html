@@ -1,112 +1,136 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        /* General styles */
-        body {
-            background-color: #D2DAFF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+<!--    <link rel="stylesheet" th:href="login.css">-->
+    <link href="login/login.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+            rel="stylesheet">
 
-        .title{
-            font-family: serif;
-            font-size: 40px;
-        }
-        form{
-            background-color:#B1B2FF;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            padding-top: 10px;
-            text-align: center;
-            width: 400px;
-        }
-        /* Login form container */
-
-
-        .error-message {
-            color: red; /* Adjust color as needed */
-            text-align: center;
-            margin-bottom: 15px; /* Add spacing for better visual separation */
-        }
-
-        /* Labels and inputs */
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            align-items: center;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        /* Login button */
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.2s ease-in-out;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #3e8e41;
-        }
-    </style>
-    <script>
-        function showErrorPopup() {
-            const errorMessage = document.getElementById("error-message");
-            errorMessage.style.display = "block";
-        }
-    </script>
 </head>
-
 <body>
-<!-- <div id="error-message"
-    style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-    Invalid username or password.
-</div>
-<div th:if="${param.error}">
-    <script>showErrorPopup();</script>
-</div> -->
-<!-- <div th:if="${param.error}" class="error-message">
-    Invalid username and password.
+
+<div class="header">
+    <div class="div">
+        <div class="div-2">
+            <div class="div-3"></div>
+            <div class="mspv">
+                <a href="index.html">MSPV</a>
+            </div>
+        </div>
+        <div class="div-4">
+            <p id="demo"></p>
+
+            <div class="date">
+                <p id="demo1"></p>
+            </div>
+
+            <div class="div-5">
+
+
+                <div class="action">
+                    <div class="profile">
+
+                        <button type="button" class="noti" title="Notification"
+                                onclick="toggleNotificationPopup();">
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="user" title="User" >
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </button>
+
+
+                        <div class="notification-popup">
+                            <h4>Recent Notifications</h4>
+                            <ul>
+                                <li>New event: Annual Science Fair on September 15th</li>
+                                <li>Reminder: Faculty Meeting on August 20th at 10 AM</li>
+                                <li>Workshop: Effective Study Techniques on August 25th</li>
+                                <li>Deadline: Submit research papers by August 30th</li>
+                                <li>Notice: Campus Clean-Up Day on September 5th</li>
+                                <li>Event: Freshers' Welcome Party on September 1st</li>
+                            </ul>
+                        </div>
+
+
+                        <div class="menu">
+                            <h3>
+                                Hod Admin
+                                <div>
+                                    MCA Department
+                                </div>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="event.html">Hod admin</a>
+                                </li>
+
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="coordinator.html">Co-ordinator admin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 </div>
 
-<div th:if="${param.logout}" class="error-message"> You have been logged out. </div> -->
-<div class="login-form" style="text-align: center;">
-    <h1 class="title">MCA DEPARTMENT </h1>
-
-    <div th:if="${param.error}" class="error-message">
-        Invalid username and password.
+<div>
+    <hr class="line">
+</div>
+<main class="main-content">
+    <div class="left-section">
+       Placeholder for image or additional content
     </div>
 
-    <div th:if="${param.logout}" class="error-message"> You have been logged out. </div>
-    <form th:action="@{/login}" method="post" >
-        <h2>Login</h2><br>
-        <div><label> User Name : <input type="text" name="username" /></label></div>
-        <div><label> Password: <input type="password" name="password" /></label></div>
-        <div><input type="submit" value="Sign In" /></div>
-    </form>
-    <a th:href="@{/register}">Register new staff member</a>
-</div>
-</body>
+<div class="right-section">
+        <h2>Login Here</h2>
+        <p>Sign in to Manage and Participate in College Events</p>
 
+<!--        <form class="login-form">-->
+<!--            <div class="login-form" style="text-align: center;">-->
+<!--                <h1 class="title">MCA DEPARTMENT </h1>-->
+
+<!--                <div th:if="${param.error}" class="error-message">-->
+<!--                    Invalid username and password.-->
+<!--                </div>-->
+
+<!--                <div th:if="${param.logout}" class="error-message"> You have been logged out. </div>-->
+<!--                <form th:action="@{/login}" method="post" >-->
+<!--                    <h2>Login</h2><br>-->
+<!--                    <div><label> User Name : <input type="text" name="username" /></label></div>-->
+<!--                    <div><label> Password: <input type="password" name="password" /></label></div>-->
+<!--                    <div><input type="submit" value="Sign In" /></div>-->
+<!--                </form>-->
+<!--                <a th:href="@{/register}">Register new staff member</a>-->
+<!--            </div>-->
+            <form th:action="@{/login}" method="post" class="login-form">
+                <div th:if="${param.logout}" class="error-message"> You have been logged out. </div>
+                <input type="text" id="user-id" name="username" placeholder="User ID"/>
+                <input type="password" id="password" name="password" placeholder="Password"/>
+
+                <input type="submit" value="Sign In" />
+            </form>
+            <!-- <div class="divider">or</div>
+
+            <button type="button" class="google-signin">Sign in with Google</button> -->
+
+    </div>
+</main>
+
+<!--<script src="login.js"></script>-->
+</body>
 </html>

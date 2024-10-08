@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>User Table</title>
+    <title>Status</title>
     <script>
         function submitForm() {
             document.getElementById("eventForm").submit();
@@ -35,7 +35,7 @@
     <a th:href="@{/allstatus}">status</a> |
     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/assign}">admin</a>
 </nav>
-<h1>List of Users</h1>
+<h1>Status</h1>
 
 <table>
     <thead>

@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
     <head>
         <title>Admin Control</title>
         <style>
@@ -22,7 +22,13 @@
         </style>
     </head>
     <body>
-    <h1>List of Users</h1>
+    <nav>
+        <a th:href="@{/home}">Home</a> |
+        <a th:href="@{/notify}">notify</a> |
+        <a th:href="@{/admin/assign}">Assign</a> |
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/assign}">admin</a>
+    </nav>
+    <h1>List of Worker/Slaves</h1>
 
     <table>
         <thead>
