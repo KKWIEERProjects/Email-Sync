@@ -157,7 +157,7 @@
                     <th>Username</th>
                     <th>roles</th>
                     <th>email</th>
-                    <th>Assign</th>
+                    <th>Assign work</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -167,7 +167,28 @@
                     <td th:text="${coo.getUsername()}"></td>
                     <td th:text="${coo.getRoles()}"></td>
                     <td th:text="${coo.getEmail()}"></td>
-                    <td> <button type="button" class="create-event" onclick="showPopup()">Add Co-ordinator</button></td>
+                    <td> <button type="button" class="create-event" onclick="showPopup12()">Assign</button></td>
+                    <div class="overlay" id="overlay"></div>
+                    <div class="popup-form" id="popupForm12">
+
+                        <button type="button" onclick="closePopup12()" id="closePopup" class="close-btn">×</button>
+                        <form th:action="@{/admin/assign}" id="event-form" method="post">
+
+                            <!-- Name Field -->
+                            <label for="name">Event:</label>
+                            <input type="text" id="name" name="event" required>
+                            <br>
+
+                            <label for="info">Info:</label>
+                            <textarea id="info" name="info" required></textarea>
+                            <br>
+
+                            <button name="coo" th:value="${coo.getUsername()}" type="submit">Submit</button>
+                        </form>
+
+
+
+                    </div>
                 </tr>
                 </tbody>
             </table>

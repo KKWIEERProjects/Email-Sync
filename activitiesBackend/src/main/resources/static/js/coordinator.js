@@ -3,10 +3,17 @@ function showPopup() {
     document.getElementById('popupForm').style.display = 'block';
     document.getElementById('overlay').style.display = 'block';
 }
-
+function showPopup12() {
+    document.getElementById('popupForm12').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
 // Function to hide the popup
 function closePopup() {
     document.getElementById('popupForm').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+function closePopup12() {
+    document.getElementById('popupForm12').style.display = 'none';
     document.getElementById('overlay').style.display = 'none';
 }
 

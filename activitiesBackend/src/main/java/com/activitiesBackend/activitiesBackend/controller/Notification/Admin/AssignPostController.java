@@ -19,16 +19,16 @@ public class AssignPostController {
     @Autowired
     private UserManageService userManageService;
 
-    @GetMapping("/admin/assign")
-    public ModelAndView getAssign(HttpSession session){
-
-        return new ModelAndView("admin/assign").addObject("coos",userManageService.getWorkers(
-                (String) session.getAttribute("id")
-        )).addObject("notifications",assignService.getPost(
-                (String) session.getAttribute("user")
-        ));
-
-    }
+//    @GetMapping("/admin/assign")
+//    public ModelAndView getAssign(HttpSession session){
+//
+//        return new ModelAndView("admin/assign").addObject("coos",userManageService.getWorkers(
+//                (String) session.getAttribute("id")
+//        )).addObject("notifications",assignService.getPost(
+//                (String) session.getAttribute("user")
+//        ));
+//
+//    }
 //    @PostMapping("/admin/assign")
 //    public List<Assign> assignAPost(@RequestParam String event, @RequestParam String coo, @RequestParam String info){
 //
@@ -40,11 +40,11 @@ public class AssignPostController {
 
 
     @PostMapping("/admin/assign")
-    public ModelAndView assignAPost(@RequestParam String event, @RequestParam String coo, @RequestParam String info){
+    public void assignAPost(@RequestParam String event, @RequestParam String coo, @RequestParam String info){
 
         assignService.setPost(event, coo, info);
 
-        return new ModelAndView("admin/assign");
+
 
     }
 
