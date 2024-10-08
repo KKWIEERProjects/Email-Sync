@@ -97,8 +97,8 @@
     <aside class="sidebar">
         <div class="profile">
             <div class="profile-pic"></div>
-            <h2>Mrs V.C. BAGAL</h2>
-            <p>HOD (Admin)</p>
+            <h2 th:text="${session.fullname}"></h2>
+
         </div>
         <nav>
             <ul>
@@ -109,8 +109,9 @@
                     Coordinators</a></li>
             </ul>
         </nav>
-
-        <button class="logout">Log Out</button>
+        <form th:action="@{/logout}">
+            <button class="logout" >Log out</button>
+        </form>
     </aside>
     <hr class="sidebar-divider">
 
@@ -126,36 +127,7 @@
 
         </div>
         <h1>Assigned Co-ordinator</h1>
-<!--     -->
-<!--        <table class="events-table">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>ID</th>-->
-<!--                <th>Name</th>-->
-<!--                <th>Department</th>-->
-<!--                <th>Status</th>-->
-<!--                <th>Action</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr>-->
-<!--                <td>1</td>-->
-<!--                <td>Mrs. Archana Rane</td>-->
-<!--                <td>MCA</td>-->
-<!--                <td><span class="status confirmed">Confirmed</span></td>-->
-<!--                <td>-->
-<!--                    <button type="button" class="edit" title="Edit" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">-->
-<!--                        <i class="fa fa-pencil" aria-hidden="true"></i>-->
-<!--                    </button>-->
-<!--                    <button type="button" class="delete" title="Delete" style="border: 2px solid #ccc; padding: 8px 12px; border-radius: 4px;">-->
-<!--                        <i class="fa fa-trash" aria-hidden="true"></i>-->
-<!--                    </button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--         -->
-<!--            </tbody>-->
-<!--        </table>-->
-<!-- -->
+
 <table class="events-table">
     <thead>
     <tr>

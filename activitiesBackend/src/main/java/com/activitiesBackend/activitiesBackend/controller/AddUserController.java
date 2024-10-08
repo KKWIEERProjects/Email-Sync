@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RestController
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class AddUserController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class AddUserController {
      */
    // @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/add")
-    public ModelAndView addUser(@RequestParam String roles,
+    public ModelAndView addUser(@RequestParam(defaultValue = "ROLE_USER",required = false) String roles,
                                 @RequestParam String name,
                                 @RequestParam String email,
                                 HttpSession session)
@@ -69,7 +69,12 @@ public class AddUserController {
         System.out.println(user);
         userManageService.save(user);
 
-        return new ModelAndView("newUser")
+//        return new ModelAndView("newUser")
+//                .addObject("credit",user.getUsername())
+//                .addObject("password",password);
+//
+        String id=(String) session.getAttribute("id");
+        return new ModelAndView("admin/admin").addObject("coos",userManageService.getWorkers(id))
                 .addObject("credit",user.getUsername())
                 .addObject("password",password);
 
