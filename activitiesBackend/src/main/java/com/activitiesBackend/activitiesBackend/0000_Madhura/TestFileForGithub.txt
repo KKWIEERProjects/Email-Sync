@@ -1,9 +1,0 @@
-Uploading a test text file for GitHub
-bubble sort
-sort ArrayList
-algorithm use karu ?
-tell i am using xyz algorithm
-java springboot .net php react - bangalore 
-techSupport : bug fixing 
-qa testing : 3 developer  and QA
-bangalore : Dashrath .net
