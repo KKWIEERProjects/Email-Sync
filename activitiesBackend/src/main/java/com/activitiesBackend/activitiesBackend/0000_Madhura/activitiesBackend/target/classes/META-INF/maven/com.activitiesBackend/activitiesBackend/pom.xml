@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.activitiesBackend</groupId>
+	<artifactId>activitiesBackend</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>activitiesBackend</name>
+	<description>KKW Activities management system</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer>
+			<id>sumedhahire</id>
+			<name>Sumedh ahire</name>
+			<email>ahiresumedhbusiness@gmail.com</email>
+			<url>linked.in/in/sumedh-ahire-github</url>
+			<roles>
+				<role>Developer</role>
+				<role>Architech</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>madhurashture</id>
+			<name>Madhura Ashture</name>
+			<email>madhuraashture@gmail.com</email>
+			<url>linkedin.com/in/madhura-ashture/</url>
+			<roles>
+				<role>Developer</role>
+				<role>Architech</role>
+				<role>Database designer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>pratikk2001</id>
+			<name>Pratik kankarej</name>
+			<email/>
+			<url>linkedin.com/in/pratik-kankarej/</url>
+			<roles>
+				<role>Developer</role>
+				<role>UI/UX</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>pratikk2001</id>
+			<name>Vedant Bhosale</name>
+			<email/>
+			<url>linkedin.com/in/vedant-bhosale-182758234/</url>
+			<roles>
+				<role>Developer</role>
+				<role>UI/UX</role>
+			</roles>
+		</developer>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>22</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+    		<version>8.0.26</version> 
+    		<scope>runtime</scope><!--Use the appropriate version -->
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+    		<groupId>jakarta.persistence</groupId>
+    		<artifactId>jakarta.persistence-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com</groupId>
+			<artifactId>JFSC_MavenProject1</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
