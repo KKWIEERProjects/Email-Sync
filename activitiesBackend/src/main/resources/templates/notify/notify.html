@@ -128,35 +128,35 @@
         </div>
         <h1>Assigned Co-ordinator</h1>
 
-<table class="events-table">
-    <thead>
-    <tr>
-        <th>Event</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Thymeleaf iteration over users to populate table rows -->
-    <tr th:each="post : ${posts}">
-        <td th:text="${post.getEvent()}"></td>
-        <td th:text="${post.getInfo()}"></td>
-        <td>
-<!--            <form th:action="@{/structure}" method="get">-->
-                <button type="submit" class="status confirmed" title="Edit"  onclick="showPopup()" name="id">Add Detail</button>
-<!--            </form>-->
+        <table class="events-table">
+            <thead>
+            <tr>
+                <th>Event</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Thymeleaf iteration over users to populate table rows -->
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.getEvent()}"></td>
+                <td th:text="${post.getInfo()}"></td>
+                <td>
+                    <!--            <form th:action="@{/structure}" method="get">-->
+                    <button type="submit" class="status confirmed" title="Edit"  onclick="showPopup()" name="id">Add Detail</button>
+                    <!--            </form>-->
 
-        </td>
-        <div class="overlay" id="overlay"></div>
-        <div class="popup-form" id="popupForm">
+                </td>
+                <div class="overlay" id="overlay"></div>
+                <div class="popup-form" id="popupForm">
 
-            <button type="button" id="closePopup" class="close-btn">×</button>
-
-
+                    <button type="button" id="closePopup" class="close-btn">×</button>
 
 
 
-                <form id="event-form" th:action="@{/structure}"  method="post">
+
+
+                    <form id="event-form" th:action="@{/structure}"  method="post">
 
 
 
@@ -171,17 +171,17 @@
 
 
 
-                </form>
+                    </form>
 
-        </div>
-
-
-
-    </tr>
+                </div>
 
 
-    </tbody>
-</table>
+
+            </tr>
+
+
+            </tbody>
+        </table>
 
 
 </div>
@@ -189,5 +189,4 @@
 </body>
 
 </html>
-
 

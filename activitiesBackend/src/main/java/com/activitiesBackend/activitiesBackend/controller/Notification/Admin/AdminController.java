@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class AdminController {
 
+
     @Autowired
     private UserManageService userManageService;
 

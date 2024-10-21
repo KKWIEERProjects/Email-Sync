@@ -1,75 +1,173 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
-    <title>Status</title>
-    <script>
-        function submitForm() {
-            document.getElementById("eventForm").submit();
-        }
-    </script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-ordinator</title>
+    <link rel="stylesheet" href="login/coordinator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
-<body>
-<nav>
-    <a th:href="@{/home}">Home</a> |
-    <a th:href="@{/notify}">notify</a> |
-    <a th:href="@{/allsend}">structure</a> |
-    <a th:href="@{/allstatus}">status</a> |
-    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/assign}">admin</a>
-</nav>
-<h1>Status</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>Event</th>
-        <th>Name</th>
-        <th>Info</th>
-        <th>Status</th>
-        <th>Change Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Thymeleaf iteration over users to populate table rows -->
-    <tr th:each="stat : ${status}">
-        <td th:text="${stat.getEvent()}"></td>
-        <td th:text="${stat.getName()}"></td>
-        <td th:text="${stat.getInfo()}"></td>
-        <td th:text="${stat.getStatus()}"></td>
-       <td> <form id="eventForm" action="#" th:action="@{/update}"  method="post">
-            <input type="hidden" name="id" th:value="${stat.getId()}">
-            <label for="status">Choose Status:</label>
-            <select id="status" name="status" onchange="submitForm()">
+<body class="coordinator-page">
+<div class="header">
+    <div class="div">
+        <div class="div-2">
+            <div class="div-3"></div>
+            <div class="mspv">
+                <a href="index.html">MSPV</a>
+            </div>
+        </div>
+        <div class="div-4">
 
-                    <option value="Pending">Pending</option>
-                    <option value="Accepted">Accepted</option>
-                    <option value="Rejected">Rejected</option>
+            <div class="date">
+                <p id="demo"></p>
+            </div>
 
-            </select>
+            <div class="div-5">
 
-       </form></td>
-        <td th:text="${stat.getCoo()}"></td>
-    </tr>
-    </tbody>
-</table>
+                <div class="action">
+                    <div class="profile" >
 
+                        <button type="button" class="noti" title="Notification" onclick="toggleNotificationPopup();" >
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="user" title="User" onclick="menuToggle();" >
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </button>
+
+                        <!-- <a href="#"><i class="fa fa-bell " aria-hidden="true"   style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
+                        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
+                        -->
+
+                        <div class="notification-popup">
+                            <h4>Recent Notifications</h4>
+                            <ul>
+                                <li>New event: Annual Science Fair on September 15th</li>
+                                <li>Reminder: Faculty Meeting on August 20th at 10 AM</li>
+                                <li>Workshop: Effective Study Techniques on August 25th</li>
+                                <li>Deadline: Submit research papers by August 30th</li>
+                                <li>Notice: Campus Clean-Up Day on September 5th</li>
+                                <li>Event: Freshers' Welcome Party on September 1st</li>
+                            </ul>
+                        </div>
+
+
+                        <div class="menu">
+                            <h3>
+                                Hod Admin
+                                <div>
+                                    MCA Department
+                                </div>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="event.html">Hod admin</a>
+                                </li>
+
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="coordinator.html">Co-ordinator admin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <!-- <i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i> -->
+                <!-- <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a> -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div><hr class="line"></div>
+
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="profile">
+            <div class="profile-pic"></div>
+            <h2 th:text="${session.fullname}"></h2>
+
+        </div>
+        <nav>
+            <ul>
+
+                <li><a href="event.html"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                    Events</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin" id="coordinators-link"><i class="fa fa-address-book-o"
+                                                                                                     style="font-size:26px; padding-right:30px"></i>
+                    Coordinators</a></li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}">
+            <button class="logout" >Log out</button>
+        </form>
+    </aside>
+    <hr class="sidebar-divider">
+
+    <main class="content">
+        <div class="header">
+            <div class="breadcrumb">
+                <p>Home / Co-ordinator</p>
+            </div>
+
+            <div class="date">
+                <p id="demo1"></p>
+            </div>
+
+        </div>
+        <h1>Status</h1>
+
+        <table class="events-table">
+            <thead>
+            <tr>
+                <th>Event</th>
+                <th>Name</th>
+                <th>Info</th>
+                <th>Status</th>
+                <th>Change Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Thymeleaf iteration over users to populate table rows -->
+            <tr th:each="stat : ${status}">
+                <td th:text="${stat.getEvent()}"></td>
+                <td th:text="${stat.getName()}"></td>
+                <td th:text="${stat.getInfo()}"></td>
+                <td th:text="${stat.getStatus()}"></td>
+                <td> <form id="eventForm" action="#" th:action="@{/update}"  method="post">
+                    <input type="hidden" name="id" th:value="${stat.getId()}">
+                    <label for="status">Choose Status:</label>
+                    <select id="status" name="status" onchange="submitForm()">
+
+                        <option value="Pending">Pending</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+
+                    </select>
+
+                </form></td>
+                <td th:text="${stat.getCoo()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+</div>
+<script src="js/coordinator.js"></script>
 </body>
+
 </html>
+
+

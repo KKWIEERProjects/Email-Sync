@@ -8,7 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@SessionAttributes("fullname")
+
 @PreAuthorize("hasRole('ROLE_ADMIN')")
 @RestController
 public class AssignPostController {
@@ -20,12 +20,18 @@ public class AssignPostController {
     private UserManageService userManageService;
 
     @PostMapping("/admin/assign")
-    public void assignAPost(@RequestParam String event, @RequestParam String coo, @RequestParam String info){
+    public ModelAndView assignAPost(@RequestParam String event, @RequestParam String cus, @RequestParam String info){
 
-        assignService.setPost(event, coo, info);
+       // System.out.println("\n==================\n~~~~~~~~~~~~~~~~~~"+cus+"\n========~~~~~~~~~~==============\n");
+        assignService.setPost(event, cus, info);
 
+        return new ModelAndView("redirect:/admin");
 
+    }
 
+    @PostMapping("/admin/gotoassign")
+    public ModelAndView gotoassign(@RequestParam String id){
+        return new ModelAndView("admin/assign").addObject("cus",id);
     }
 
 }

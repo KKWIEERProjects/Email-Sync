@@ -101,8 +101,8 @@
                 <ul>
                     <li><a href="event.html"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
                         Events</a></li>
-                    <li><a href="coordinator.html" id="coordinators-link"><i class="fa fa-address-book-o"
-                                                                             style="font-size:26px; padding-right:30px"></i>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin" id="coordinators-link"><i class="fa fa-address-book-o"
+                                                                                                         style="font-size:26px; padding-right:30px"></i>
                         Coordinators</a></li>
                 </ul>
             </nav>
@@ -155,43 +155,29 @@
                 <tr>
                     <th>Name</th>
                     <th>Username</th>
-                    <th>roles</th>
-                    <th>email</th>
-                    <th>Assign work</th>
+                    <th>Roles</th>
+                    <th>Email</th>
+                    <th>Assign Work</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- Thymeleaf iteration over users to populate table rows -->
-                <tr th:each="coo : ${coos}">
-                    <td th:text="${coo.getName()}"></td>
-                    <td th:text="${coo.getUsername()}"></td>
-                    <td th:text="${coo.getRoles()}"></td>
-                    <td th:text="${coo.getEmail()}"></td>
-                    <td> <button type="button" class="create-event" onclick="showPopup12()">Assign</button></td>
-                    <div class="overlay" id="overlay"></div>
-                    <div class="popup-form" id="popupForm12">
-
-                        <button type="button" onclick="closePopup12()" id="closePopup" class="close-btn">×</button>
-                        <form th:action="@{/admin/assign}" id="event-form" method="post">
-
-                            <!-- Name Field -->
-                            <label for="name">Event:</label>
-                            <input type="text" id="name" name="event" required>
-                            <br>
-
-                            <label for="info">Info:</label>
-                            <textarea id="info" name="info" required></textarea>
-                            <br>
-
-                            <button name="coo" th:value="${coo.getUsername()}" type="submit">Submit</button>
+                <tr th:each="cus, iterStat : ${coos}">
+                    <td th:text="${cus.getName()}"></td>
+                    <td th:text="${cus.getUsername()}"></td>
+                    <td th:text="${cus.getRoles()}"></td>
+                    <td th:text="${cus.getEmail()}"></td>
+                    <td>
+                        <form action="/admin/gotoassign" method="post">
+                            <button type="submit" class="create-event" th:value="${cus.getUsername()}" name="id" >Assign</button>
                         </form>
-
-
-
-                    </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+
+            <!-- Popup Form -->
+        </main>
 
 
 
@@ -199,7 +185,7 @@
 
 
     </div>
-    <script src="js/coordinator.js"></script>
+    <script src="js/admin.js"></script>
     </body>
 
 </html>
