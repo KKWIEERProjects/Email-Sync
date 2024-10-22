@@ -1,111 +1,152 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <head>
-        <style>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 
-            /* Navigation Bar Styling */
-.navbar {
-    background-color: #333;
-    padding: 10px;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-ordinator</title>
+    <link rel="stylesheet" href="login/coordinator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-.nav-links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-}
+</head>
 
-.nav-links li {
-    margin-right: 20px;
-}
+<body class="coordinator-page">
+<div class="header">
+    <div class="div">
+        <div class="div-2">
+            <div class="div-3"></div>
+            <div class="mspv">
+                <a href="index.html">MSPV</a>
+            </div>
+        </div>
+        <div class="div-4">
 
-.nav-links a,
-.nav-links button {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #333;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
+            <div class="date">
+                <p id="demo"></p>
+            </div>
 
-.nav-links a:hover,
-.nav-links button:hover {
-    background-color: #575757;
-}
+            <div class="div-5">
 
-/* Dropdown Styling */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+                <div class="action">
+                    <div class="profile" >
 
-#notificationList {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    padding: 0;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
+                        <button type="button" class="noti" title="Notification" onclick="toggleNotificationPopup();" >
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="user" title="User" onclick="menuToggle();" >
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </button>
 
-#notificationList li {
-    color: #333;
-    padding: 10px;
-    text-align: left;
-    list-style-type: none;
-    border-bottom: 1px solid #eee;
-}
+                        <!-- <a href="#"><i class="fa fa-bell " aria-hidden="true"   style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
+                        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
+                        -->
 
-#notificationList li:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
+                        <div class="notification-popup">
+                            <h4>Recent Notifications</h4>
+                            <ul>
+                                <li>New event: Annual Science Fair on September 15th</li>
+                                <li>Reminder: Faculty Meeting on August 20th at 10 AM</li>
+                                <li>Workshop: Effective Study Techniques on August 25th</li>
+                                <li>Deadline: Submit research papers by August 30th</li>
+                                <li>Notice: Campus Clean-Up Day on September 5th</li>
+                                <li>Event: Freshers' Welcome Party on September 1st</li>
+                            </ul>
+                        </div>
 
-#notificationList li:last-child {
-    border-bottom: none;
-}
 
-        </style>
-    </head>
-    <body>
-    <nav>
-        <a th:href="@{/home}">Home</a> |
-        <a th:href="@{/notify}">notify</a> |
-        <a th:href="@{/allsend}">structure</a> |
-        <a th:href="@{/allstatus}">status</a> |
-        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/assign}">admin</a>
-    </nav>
+                        <div class="menu">
+                            <h3>
+                                Hod Admin
+                                <div>
+                                    MCA Department
+                                </div>
+                            </h3>
+                            <ul>
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="event.html">Hod admin</a>
+                                </li>
 
-    <h1>Form Submission</h1>
-    <form th:action="@{/admin/assign}" method="post">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="coordinator.html">Co-ordinator admin</a>
+                                </li>
 
-        <!-- Name Field -->
-        <label for="name">Event:</label>
-        <input type="text" id="name" name="event" required>
-        <br>
+                            </ul>
+                        </div>
+                    </div>
 
-        <!-- COO Dropdown -->
-        <label for="coo">COORDINATORS:</label>
-        <select id="coo" name="coo">
-            <option value="" disabled selected>Select a COO</option>
-            <option th:each="coo : ${coos}" th:value="${coo.getUsername()}" th:text="${coo.getName()}"></option>
-        </select>
-        <br>
 
-        <!-- Info Field -->
-        <label for="info">Info:</label>
-        <textarea id="info" name="info" required></textarea>
-        <br>
+                </div>
 
-        <button type="submit">Submit</button>
-    </form>
 
-    </body>
+                <!-- <i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i> -->
+                <!-- <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a> -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div><hr class="line"></div>
+
+
+<div class="container">
+    <aside class="sidebar">
+        <div class="profile">
+            <div class="profile-pic"></div>
+            <h2 th:text="${session.user}"></h2>
+
+        </div>
+        <nav>
+            <ul>
+
+                <li><a href="/notify"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                    Events</a></li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin" id="coordinators-link"><i class="fa fa-address-book-o"
+                                                                                                     style="font-size:26px; padding-right:30px"></i>
+                    Coordinators</a></li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}">
+            <button class="logout" >Log out</button>
+        </form>
+    </aside>
+    <hr class="sidebar-divider">
+
+    <main class="content">
+        <div class="header">
+            <div class="breadcrumb">
+                <p>Home / Co-ordinator</p>
+            </div>
+
+            <div class="date">
+                <p id="demo1"></p>
+            </div>
+
+        </div>
+        <h1>Assign</h1>
+        <form th:action="@{/admin/assign}" id="event-form" method="post">
+
+            <!-- Name Field -->
+            <label for="name">Event:</label>
+            <input type="text" id="name" name="event" required>
+            <br>
+
+            <label for="info">Info:</label>
+            <textarea id="info" name="info" required></textarea>
+            <br>
+
+            <button name="coo" th:value="${cus}" type="submit">Submit</button>
+        </form>
+
+
+    </main>
+</div>
+<script src="js/coordinator.js"></script>
+</body>
+
 </html>
+
