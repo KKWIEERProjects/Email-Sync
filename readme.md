@@ -4,7 +4,7 @@
 This project is a comprehensive web-based application designed to manage and automate personalized email campaigns, including features for user notifications, session management, and a robust hierarchical security model. Administrators can create new users, assign tasks, and manage communication templates. The application streamlines tasks like sending personalized emails, generating PDFs, and scheduling discussions, all while maintaining secure, role-based access control.
 
 
-##Usage 
+## Usage 
 
 You are granted a non-exclusive, non-transferable, and revocable license to use this software under the following conditions:
 1. The flow or design pattern inherent in this project may not be replicated or used in any form, including but not limited to personal or commercial use.
