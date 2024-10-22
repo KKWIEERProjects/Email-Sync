@@ -11,6 +11,9 @@ You are granted a non-exclusive, non-transferable, and revocable license to use 
 2. Redistribution of any portion of the code is prohibited unless explicitly authorized by the owner.
 3. Modifications of the code are allowed only for internal purposes, and cannot be shared or published externally without permission.
 
+## Clause
+
+Prohibition on Replicating Flow: The flow, architecture, and specific sequence of operations demonstrated in this project (hereafter "Flow") are proprietary to the owner. Use of the Flow in other projects, products, or services without explicit permission from the owner is strictly prohibited. This includes, but is not limited to, the reproduction of workflow patterns, business logic structures, and user journey implementations.
 
 ## Contributing
 
