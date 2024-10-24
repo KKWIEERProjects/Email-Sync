@@ -30,7 +30,8 @@ auto generate username and password
 ## Installation
 
     
-git clone [https://github.com/your-username/email-sync-application.git](https://github.com/KKWIEERProjects/Email-Sync)
+git clone [https://github.com/KKWIEERProjects/Email-Sync](https://github.com/KKWIEERProjects/Email-Sync)
+
 cd email-sync-application
 
 Set Up Database: Update application.properties:
