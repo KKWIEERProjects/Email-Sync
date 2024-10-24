@@ -64,7 +64,7 @@ This structured, automated flow significantly reduces manual effort, improves co
     
 git clone [https://github.com/KKWIEERProjects/Email-Sync](https://github.com/KKWIEERProjects/Email-Sync)
 
-cd email-sync-application
+cd activitiesBackend
 
 Set Up Database: Update application.properties:
 
