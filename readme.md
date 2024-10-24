@@ -53,11 +53,11 @@ This structured, automated flow significantly reduces manual effort, improves co
 
 ## Technologies Used
 
-    Backend: Spring Boot (Spring Data JPA, Spring Security)
+    Backend: Spring Boot (Spring Data JPA, Spring Security, Hibernate)
     Frontend: Thymeleaf, HTML/CSS/JavaScript
-    Database: MySQL or PostgreSQL
+    Database: MySQL database
     Security: Spring Security for authentication and authorization
-    Email: JavaMailSender for email dispatch
+    
 
 ## Installation
 
