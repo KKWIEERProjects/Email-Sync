@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login/index.css">
+    <link rel="stylesheet" th:href="@{/login/index.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Home</title>
@@ -28,12 +27,16 @@
         </div>
 
     </div>
+    <div class="upcoming-events-2" th:value="'Assign to '+${cus}"></div>
+
     <div>
         <form method="post" action="/admin/assign">
             <input type="hidden" th:value="${cus}" name="cus" readonly>
             <input type="text" name="event" required>
+            <br>
             <input type="text" name="info" required>
-        <button type="submit">send</button>
+            <br>
+            <button type="submit" class="button-29" role="button">Button 29</button>
         </form>
 
 
@@ -42,7 +45,7 @@
 
 
 </div>
-<script src="js/event.js"></script>
+<script th:src="@{/js/event.js}"></script>
 </body>
 
 </html>
