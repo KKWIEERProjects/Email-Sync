@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body class="coordinator-page">
@@ -18,7 +18,7 @@
         <div class="div-2">
             <div class="div-3"></div>
             <div class="mspv">
-                <a href="index.html">MSPV</a>
+                <a href="index.html">Email Sync</a>
             </div>
         </div>
         <div class="div-4">
@@ -116,76 +116,40 @@
     <hr class="sidebar-divider">
 
     <main class="content">
-        <div class="header">
-            <div class="breadcrumb">
-                <p>Home / Co-ordinator</p>
-            </div>
+        <div class="container mt-5">
+            <h2>User Profile</h2>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td th:text="${user.name}">John Doe</td>
+                </tr>
+                <tr>
+                    <th scope="row">Username</th>
+                    <td th:text="${user.username}">johndoe</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td th:text="${user.email}">john.doe@example.com</td>
+                    <td><form action="/profile/email" method="post">
+                        <input type="email" name="email" >
+                        <button type="submit">Set</button>
+                    </form></td>
+                </tr>
+                <tr>
+                    <th scope="row">Token</th>
+                    <td th:text="${user.token}">john.doe@example.com</td>
+                    <td><form action="/profile/token" method="post">
+                        <input type="text" name="token" >
+                        <button type="submit">Set</button>
+                    </form></td>
 
-            <div class="date">
-                <p id="demo1"></p>
-            </div>
-
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <h1>Assigned Co-ordinator</h1>
 
-        <table class="events-table">
-            <thead>
-            <tr>
-                <th>Event</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Thymeleaf iteration over users to populate table rows -->
-            <tr th:each="post : ${posts}">
-                <td th:text="${post.getEvent()}"></td>
-                <td th:text="${post.getInfo()}"></td>
-                <td>
-                    <!--            <form th:action="@{/structure}" method="get">-->
-                    <button type="submit" class="status confirmed" title="Edit"  onclick="showPopup()" name="id">Add Detail</button>
-                    <!--            </form>-->
-
-                </td>
-                <div class="overlay" id="overlay"></div>
-                <div class="popup-form" id="popupForm">
-
-                    <button type="button" id="closePopup" class="close-btn">×</button>
-
-
-
-
-
-                    <form id="event-form" th:action="@{/structure}"  method="post">
-
-
-
-
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" placeholder="Enter guest name">
-
-                        <label for="event">Venue:</label>
-                        <input type="text" id="event" name="venue" placeholder="Enter event details">
-
-                        <label for="event">Mail:</label>
-                        <input type="email" id="event" name="mail" placeholder="Enter mail addresss ">
-
-                        <button type="submit" name="id" th:value="${post.getId()}">send</button>
-
-
-
-                    </form>
-
-                </div>
-
-
-
-            </tr>
-
-
-            </tbody>
-        </table>
-
+    </main>
 
 </div>
 <script src="js/coordinator.js"></script>

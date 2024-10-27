@@ -15,7 +15,7 @@
             <div class="div-2">
                 <div class="div-3"></div>
                 <div class="mspv">
-                    <a href="index.html">MSPV</a>
+                    <a href="index.html">Event Sync</a>
                 </div>
             </div>
             <div class="div-4">
@@ -99,8 +99,8 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="event.html"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
-                        Events</a></li>
+                    <li><a href="/allsend"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                        To send</a></li>
                     <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin" id="coordinators-link"><i class="fa fa-address-book-o"
                                                                                                          style="font-size:26px; padding-right:30px"></i>
                         Coordinators</a></li>
@@ -163,15 +163,44 @@
                 <tbody>
                 <!-- Thymeleaf iteration over users to populate table rows -->
                 <tr th:each="cus, iterStat : ${coos}">
-                    <td th:text="${cus.getName()}"></td>
-                    <td th:text="${cus.getUsername()}"></td>
-                    <td th:text="${cus.getRoles()}"></td>
-                    <td th:text="${cus.getEmail()}"></td>
-                    <td>
-                        <form action="/admin/gotoassign" method="post">
-                            <button type="submit" class="create-event" th:value="${cus.getUsername()}" name="id" >Assign</button>
-                        </form>
-                    </td>
+                    <form action="/admin/gotoassign" method="post">
+                        <td th:text="${cus.getName()}"></td>
+                        <td th:text="${cus.getUsername()}" ></td>
+                        <td th:text="${cus.getRoles()}"></td>
+                        <td th:text="${cus.getEmail()}"></td>
+                        <td>
+                            <form action="/admin/gotoassign" method="post">
+                                <input type="hidden" th:value="${cus.getUsername()}" name="id"/>
+                                <button type="submit" class="status confirmed" >Assign</button>
+                            </form>
+                        </td>
+
+<!--                    <div class="overlay" id="overlay"></div>-->
+<!--                    <div class="popup-form" id="popupForm">-->
+
+<!--                        <button type="button" id="closePopup12" class="close-btn">×</button>-->
+
+
+
+
+
+<!--                        <form id="event-form" th:action="@{/admin/assign}"  method="post">-->
+
+
+
+
+<!--                            <label for="name">Event:</label>-->
+<!--                            <input type="text" id="name" name="event" placeholder="Enter guest name">-->
+
+<!--                            <label for="event">Info:</label>-->
+<!--                            <input type="text" id="event" name="info" placeholder="Enter event details">-->
+
+<!--                            <button type="submit" name="cus" th:value="${cus.getUsername()}">send</button>-->
+
+
+
+<!--                        </form>-->
+<!--                    </div>-->
                 </tr>
                 </tbody>
             </table>
@@ -185,7 +214,8 @@
 
 
     </div>
-    <script src="js/admin.js"></script>
+    <script src="js/coordinator.js"></script>
+<!--    <script src="js/admin.js"></script>-->
     </body>
 
 </html>

@@ -23,4 +23,10 @@ public interface UserRepo extends JpaRepository<User,String> {
     @Query("SELECT u FROM User u WHERE u.admin_id = :adminId")
     List<User> findUsernamesByAdminId(@Param("adminId") String adminId);
 
+    @Query("SELECT u FROM User u WHERE u.token = :token")
+    void changeToken(@Param("token") String token);
+
+    @Query("SELECT u FROM User u WHERE u.email = :email")
+    void changeEmail(@Param("email") String email);
+
 }

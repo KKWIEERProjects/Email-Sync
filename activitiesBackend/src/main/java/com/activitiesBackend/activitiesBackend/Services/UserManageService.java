@@ -69,4 +69,20 @@ public class UserManageService implements UserManageInterface{
     public List<Template> getAllTemplates(String id){
         return userRepo.findById(id).orElse(null).getTemplates();
     }
+
+    public void changeToken(String id,String token){
+
+        User user=userRepo.findById(id).orElseThrow();
+        user.setToken(token);
+        userRepo.save(user);
+
+    }
+
+    public void changeEmail(String id,String email){
+
+        User user=userRepo.findById(id).orElseThrow();
+        user.setEmail(email);
+        userRepo.save(user);
+
+    }
 }

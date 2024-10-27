@@ -39,6 +39,9 @@ public class User {
     @Column
     private String admin_id;
 
+    @Column
+    private String token;
+
     /**
      * User ----> user----->template
      * if admin removed all templates also removed

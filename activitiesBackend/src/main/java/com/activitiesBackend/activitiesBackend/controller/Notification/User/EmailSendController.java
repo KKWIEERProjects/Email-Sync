@@ -4,15 +4,22 @@ import com.activitiesBackend.activitiesBackend.Services.NotificationService.Assi
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.HistoryService;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.StatusService;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.StructureService;
+import com.activitiesBackend.activitiesBackend.Services.UserManageService;
+import com.activitiesBackend.activitiesBackend.dto.User;
 import com.activitiesBackend.activitiesBackend.model.Notifications.StatusIQ;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
+import com.activitiesBackend.activitiesBackend.util.Mail.MailUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.context.Context;
+
+import java.util.HashMap;
 
 @RestController
 public class EmailSendController {
@@ -29,6 +36,12 @@ public class EmailSendController {
     @Autowired
     private HistoryService historyService;
 
+    @Autowired
+    private MailUtil mailUtil;
+
+    @Autowired
+    private UserManageService userManageService;
+
     /**
      * aaby lodo id hai to sessions kiu?
      * list kiu?
@@ -38,9 +51,32 @@ public class EmailSendController {
      * @return
      */
     @PostMapping("/send")
-    public ModelAndView sendEmail(@RequestParam String id, HttpSession session){
+    public ModelAndView sendEmail(@RequestParam String id, HttpSession session, HttpServletResponse response) {
 
         Structure structure=structureService.getStructure(id);
+
+        Context context=new Context();
+        context.setVariable("event",structure.getEvent());
+        context.setVariable("name",structure.getName());
+        context.setVariable("date",structure.getEstimate());
+        context.setVariable("venue",structure.getVenue());
+        context.setVariable("info",structure.getInfo());
+        context.setVariable("id",structure.getId());
+
+
+        String temp=mailUtil.createTemplate(context,"template/expert");
+        try {
+            User user = userManageService.getUser((String) session.getAttribute("id"));
+            HashMap<String,String> hash=new HashMap();
+            hash.put("subject","Invitation to speak at "+structure.getEvent());
+            hash.put("ourEmail", user.getEmail());
+            hash.put("ourToken",user.getToken());
+            hash.put("email",structure.getMail());
+
+            mailUtil.sendMail(response, temp, hash);
+        }catch (Exception ex){
+            return new ModelAndView("redirect:/allstatus");
+        }
 
         statusService.setStatusTable(structure);
         structureService.remove(structure);
@@ -68,6 +104,23 @@ public class EmailSendController {
         return new ModelAndView("redirect:/history");
 
 
+    }
+
+    @GetMapping("/mail/update/{id}")
+    public ResponseEntity updateStatus(@PathVariable String id,@RequestParam String status){
+
+        StatusIQ statusIQ=statusService.updateStatus(id,status);
+        historyService.record(statusIQ);
+        System.out.println("\nstrructure===========================\n"+id+"\n==============================");
+        statusService.remove(id);
+
+        return ResponseEntity.ok("ok");
+
+    }
+
+    @GetMapping("/temp")
+    public ModelAndView getOn(){
+        return new ModelAndView("template/expert");
     }
 
 }

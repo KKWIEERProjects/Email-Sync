@@ -74,7 +74,8 @@ public class WebSecurity {
         http.  csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> requests
                        .requestMatchers("/login/**","/js/**").permitAll()
-                        .requestMatchers("https://cdnjs.cloudflare.com/**", "https://fonts.googleapis.com/**", "https://fonts.gstatic.com/**").permitAll()
+                        .requestMatchers("https://cdnjs.cloudflare.com/**", "https://fonts.googleapis.com/**", "https://fonts.gstatic.com/**","https://stackpath.bootstrapcdn.com/**").permitAll()
+                        .requestMatchers("/mail/update/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
