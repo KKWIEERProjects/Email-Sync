@@ -22,7 +22,7 @@ public class AssignPostController {
 
     //its taking usernames
     @PostMapping("/admin/assign")
-    public ModelAndView assignAPost(@RequestParam String event, @RequestParam String cus, @RequestParam String info,@RequestParam String mail){
+    public ModelAndView assignAPost(@RequestParam String event, @RequestParam String cus, @RequestParam String info){
 
         System.out.println("\n==================\n~~~~~~~~~~~~~~~~~~"+cus+"\n========~~~~~~~~~~==============\n");
         assignService.setPost(event, cus, info);

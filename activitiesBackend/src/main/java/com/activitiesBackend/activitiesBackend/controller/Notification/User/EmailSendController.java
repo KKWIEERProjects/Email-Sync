@@ -12,11 +12,10 @@ import com.activitiesBackend.activitiesBackend.util.Mail.MailUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.context.Context;
 
@@ -52,7 +51,7 @@ public class EmailSendController {
      * @return
      */
     @PostMapping("/send")
-    public ModelAndView sendEmail(@RequestParam String id, HttpSession session, HttpServletResponse response) throws Exception{
+    public ModelAndView sendEmail(@RequestParam String id, HttpSession session, HttpServletResponse response) {
 
         Structure structure=structureService.getStructure(id);
 
@@ -62,20 +61,22 @@ public class EmailSendController {
         context.setVariable("date",structure.getEstimate());
         context.setVariable("venue",structure.getVenue());
         context.setVariable("info",structure.getInfo());
+        context.setVariable("id",structure.getId());
 
 
         String temp=mailUtil.createTemplate(context,"template/expert");
+        try {
+            User user = userManageService.getUser((String) session.getAttribute("id"));
+            HashMap<String,String> hash=new HashMap();
+            hash.put("subject","Invitation to speak at "+structure.getEvent());
+            hash.put("ourEmail", user.getEmail());
+            hash.put("ourToken",user.getToken());
+            hash.put("email",structure.getMail());
 
-        User user=userManageService.getUser((String) session.getAttribute("id"));
-
-        HashMap<String,String> hash=new HashMap();
-        hash.put("subject","test");
-        hash.put("ourEmail", user.getEmail());
-        hash.put("ourToken",user.getToken());
-        hash.put("email",structure.getMail());
-
-        mailUtil.sendMail(response,temp,hash);
-
+            mailUtil.sendMail(response, temp, hash);
+        }catch (Exception ex){
+            return new ModelAndView("redirect:/allstatus");
+        }
 
         statusService.setStatusTable(structure);
         structureService.remove(structure);
@@ -102,6 +103,18 @@ public class EmailSendController {
 
         return new ModelAndView("redirect:/history");
 
+
+    }
+
+    @GetMapping("/mail/update/{id}")
+    public ResponseEntity updateStatus(@PathVariable String id,@RequestParam String status){
+
+        StatusIQ statusIQ=statusService.updateStatus(id,status);
+        historyService.record(statusIQ);
+        System.out.println("\nstrructure===========================\n"+id+"\n==============================");
+        statusService.remove(id);
+
+        return ResponseEntity.ok("ok");
 
     }
 

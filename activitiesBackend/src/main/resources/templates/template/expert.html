@@ -79,7 +79,9 @@
         <strong>The Event Coordination Team</strong><br>
         XYZ Organization</p>
 
-    <a href="#" class="button">Confirm Your Availability</a>
+   <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Accepted'}" class="button">Accept </a>
+
+    <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Rejected'}" class="button">Rejected </a>
 </div>
 
 </body>
