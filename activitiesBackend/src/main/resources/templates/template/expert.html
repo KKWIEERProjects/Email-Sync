@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation to Speak at Expert Talk</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="email-container">
+    <h1>Invitation to Speak at <span th:text="${event}">Expert Talk</span></h1>
+
+    <p>Dear <span th:text="${name}">Dr. John Doe</span>,</p>
+
+    <p>
+        We are pleased to invite you as a keynote speaker for our upcoming event,
+        <span class="label" th:text="${event}">Expert Talk</span>,
+        scheduled for <span th:text="${date}">January 15, 2024</span> at
+        <span th:text="${time}">10:00 AM</span> at <span th:text="${venue}">Conference Hall, XYZ Venue</span>.
+    </p>
+
+    <p>
+        The event will bring together professionals, thought leaders, and industry experts
+        to discuss the latest advancements in technology and share insights into emerging trends.
+    </p>
+
+    <p>
+        As a highly respected expert in your field, we believe your talk on
+        <span th:text="${info}">cutting-edge technologies in AI and machine learning</span>
+        will greatly enrich the event and provide valuable insights to our audience.
+    </p>
+
+    <p>
+        We would be honored to have you join us. Please let us know if the proposed date and time suit your schedule,
+        and if any adjustments are necessary, we will gladly accommodate.
+    </p>
+
+    <p>We look forward to your positive response and hope to welcome you as a distinguished speaker at our event.</p>
+
+    <p>Best regards,<br>
+        <strong>The Event Coordination Team</strong><br>
+        XYZ Organization</p>
+
+    <a href="#" class="button">Confirm Your Availability</a>
+</div>
+
+</body>
+</html>

@@ -15,6 +15,7 @@ public class AssignService {
 
     public void setPost(String event,String coo,String info){
 
+        System.out.println("==========inside set post=======");
         Assign assign=Assign.builder()
                 .coordinator(coo)
                 .event(event)
