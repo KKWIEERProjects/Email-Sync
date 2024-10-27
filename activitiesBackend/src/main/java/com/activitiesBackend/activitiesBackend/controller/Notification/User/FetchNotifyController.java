@@ -41,9 +41,10 @@ public class FetchNotifyController {
     public ModelAndView setStructure(@RequestParam String id,
                                   @RequestParam String name,
                                   @RequestParam String venue,
+                                  @RequestParam String mail,
                                   HttpSession session){
         Assign assign=assignService.getPostById(id);
-        String sid=structureService.save(assign,name,venue,(String) session.getAttribute("user"));
+        String sid=structureService.save(assign,name,venue,(String) session.getAttribute("user"),mail);
         System.out.println("sid"+sid);
         return new ModelAndView("redirect:/allsend");
 

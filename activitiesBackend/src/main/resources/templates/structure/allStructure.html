@@ -137,6 +137,7 @@
                 <th>Estimate</th>
                 <th>Venue</th>
                 <th>Information</th>
+                <th>Mail id</th>
                 <th>Send Email</th>
             </tr>
             </thead>
@@ -148,6 +149,7 @@
                 <td th:text="${structure.getEstimate()}"></td>
                 <td th:text="${structure.getVenue()}"></td>
                 <td th:text="${structure.getInfo()}"></td>
+                <td th:text="${structure.getMail()}"></td>
                 <td>
                     <form th:action="@{/send}" method="post">
                         <button type="submit" th:value="${structure.getId()}" name="id">click</button>

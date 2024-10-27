@@ -37,4 +37,7 @@ public class Structure {
     @Column
     private String coo;
 
+    @Column
+    private String mail;
+
 }

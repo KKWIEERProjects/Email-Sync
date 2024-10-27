@@ -4,6 +4,8 @@ import com.activitiesBackend.activitiesBackend.Services.NotificationService.Assi
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.HistoryService;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.StatusService;
 import com.activitiesBackend.activitiesBackend.Services.NotificationService.StructureService;
+import com.activitiesBackend.activitiesBackend.Services.UserManageService;
+import com.activitiesBackend.activitiesBackend.dto.User;
 import com.activitiesBackend.activitiesBackend.model.Notifications.StatusIQ;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
 import com.activitiesBackend.activitiesBackend.util.Mail.MailUtil;
@@ -38,6 +40,9 @@ public class EmailSendController {
     @Autowired
     private MailUtil mailUtil;
 
+    @Autowired
+    private UserManageService userManageService;
+
     /**
      * aaby lodo id hai to sessions kiu?
      * list kiu?
@@ -47,7 +52,7 @@ public class EmailSendController {
      * @return
      */
     @PostMapping("/send")
-    public ModelAndView sendEmail(@RequestParam String id, HttpSession session, HttpServletResponse response){
+    public ModelAndView sendEmail(@RequestParam String id, HttpSession session, HttpServletResponse response) throws Exception{
 
         Structure structure=structureService.getStructure(id);
 
@@ -61,11 +66,13 @@ public class EmailSendController {
 
         String temp=mailUtil.createTemplate(context,"template/expert");
 
+        User user=userManageService.getUser((String) session.getAttribute("id"));
+
         HashMap<String,String> hash=new HashMap();
         hash.put("subject","test");
-        hash.put("ourEmail","earthusmomma@gmail.com");
-        hash.put("ourToken","miew zzvx bisk uyab");
-        hash.put("email","sumedhbusiness.info@gmail.com");
+        hash.put("ourEmail", user.getEmail());
+        hash.put("ourToken",user.getToken());
+        hash.put("email",structure.getMail());
 
         mailUtil.sendMail(response,temp,hash);
 

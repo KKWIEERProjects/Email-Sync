@@ -17,7 +17,7 @@ public class StructureService {
 
     public String save(Assign assign, String name,
                      //Date startDate,Date endDate,
-                     String venue,String coo){
+                     String venue,String coo,String mail){
 
         //String date=startDate.toString() + endDate.toString();
         String date="NaN";
@@ -29,6 +29,7 @@ public class StructureService {
                 .event(assign.getEvent())
                 .venue(venue)
                 .coo(coo)
+                .mail(mail)
                 .build();
         structureRepo.save(structure);
         System.out.println("structure");
