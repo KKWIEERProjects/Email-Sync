@@ -22,7 +22,8 @@ public class ErrorHandler{
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
         return new ModelAndView("error").
-                    addObject("msg", "AN UNEXPECTED ERROR OCCURRED");
+                    addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+                .addObject("errorMessage","Error");
 
 
     }
@@ -62,7 +63,8 @@ public class ErrorHandler{
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
         return new ModelAndView("error").
-                addObject("msg", ex.getMessage());
+                addObject("msg", ex.getMessage())
+                .addObject("errorMessage",ex.getMessage());
 
 
     }
