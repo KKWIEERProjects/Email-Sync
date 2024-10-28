@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.server.PathParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,8 @@ import java.util.HashMap;
 
 @RestController
 public class EmailSendController {
+
+    Logger logger= LoggerFactory.getLogger(EmailSendController.class);
 
     @Autowired
     private AssignService assignService;
@@ -43,7 +47,7 @@ public class EmailSendController {
     private UserManageService userManageService;
 
     /**
-     * aaby lodo id hai to sessions kiu?
+     *
      * list kiu?
      * baadme change kario
      * @param id
@@ -111,31 +115,44 @@ public class EmailSendController {
     public ModelAndView updateStatus(@PathVariable String id,@RequestParam String status
                                 ,@RequestParam String dateStart,@RequestParam String dateEnd){
 
-//        StatusIQ statusIQ=statusService.updateStatus(id,status);
-//        historyService.record(statusIQ);
-//        System.out.println("\nstrructure===========================\n"+id+"\n==============================");
-//        statusService.remove(id);
-//
-//        return ResponseEntity.ok("ok");
-        return new ModelAndView("update").addObject("id",id)
+        return new ModelAndView("updates/update").addObject("id",id)
                 .addObject("status",status)
                 .addObject("dateStart",dateStart)
                 .addObject("dateEnd",dateEnd);
 
     }
 
+    @GetMapping("/mail/rejected/{id}")
+    public ModelAndView updateRejected(@PathVariable String id,@RequestParam String status){
+        structureService.getStructure(id);
+        return new ModelAndView("updates/updateRejected");
+    }
+
     @PostMapping("/mail/update/set")
     public ResponseEntity getEntity(@RequestParam String id,@RequestParam String status
             ,@RequestParam String date,@RequestParam String phone){
         StatusIQ statusIQ=statusService.updateStatus(id,status);
-        if(status.equals("Accepted"))
-            historyService.record(statusIQ,date,phone);
-        else
-            historyService.record(statusIQ,"NaN","NaN");
-        System.out.println("\nstrructure===========================\n"+id+"\n==============================");
+        logger.info(id);
+        historyService.record(statusIQ,date,phone);
+
         statusService.remove(id);
 
-        return ResponseEntity.ok("ok");
+        return ResponseEntity.ok("<html><body> <h1>You are all set</h1><strong>"+id+"</strong>"+
+                    "</body></html>");
+
+    }
+
+    @PostMapping("/mail/update/reject")
+    public ResponseEntity getRejection(@RequestParam String id,@RequestParam String status
+            ){
+        StatusIQ statusIQ=statusService.updateStatus(id,status);
+        logger.info(id);
+        historyService.record(statusIQ,"NaN","NaN");
+
+        statusService.remove(id);
+
+        return ResponseEntity.ok("<html><body> <h1>Maybe next time!</h1>"+
+                "</body></html>");
 
     }
 

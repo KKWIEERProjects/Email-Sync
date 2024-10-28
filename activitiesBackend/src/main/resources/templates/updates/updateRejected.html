@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Example 2</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<h3>Only one step remains</h3>
+<form action="/mail/update/reject" method="post">
+
+    <label>Feedback:</label>
+    <label>
+        <textarea name="feedback" required></textarea>
+    </label>
+
+    <button type="submit" >Confirm</button>
+
+</form>
+
+
+
+</body>
+
+</html>

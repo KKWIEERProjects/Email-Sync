@@ -87,7 +87,7 @@
 
    <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Accepted'+ '&dateStart=' + ${dateStart} + '&dateEnd=' + ${dateEnd}}" class="button" >Accept </a>
 
-    <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Rejected'+ '&dateStart=' + ${dateStart} + '&dateEnd=' + ${dateEnd}}" class="button">Rejected </a>
+    <a th:href="@{'http://localhost:8080/mail/rejected/'+${id}+'?status=Rejected'}" class="button">Rejected </a>
 </div>
 
 </body>
