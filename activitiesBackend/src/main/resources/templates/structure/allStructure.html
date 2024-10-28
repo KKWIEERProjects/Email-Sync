@@ -134,7 +134,8 @@
             <tr>
                 <th>Event</th>
                 <th>Name</th>
-                <th>Estimate</th>
+                <th>Estimate Start</th>
+                <th>Estimate End</th>
                 <th>Venue</th>
                 <th>Information</th>
                 <th>Mail id</th>
@@ -146,7 +147,8 @@
             <tr th:each="structure : ${structures}">
                 <td th:text="${structure.getEvent()}"></td>
                 <td th:text="${structure.getName()}"></td>
-                <td th:text="${structure.getEstimate()}"></td>
+                <td th:text="${structure.getEstimateStart()}"></td>
+                <td th:text="${structure.getEstimateEnd()}"></td>
                 <td th:text="${structure.getVenue()}"></td>
                 <td th:text="${structure.getInfo()}"></td>
                 <td th:text="${structure.getMail()}"></td>

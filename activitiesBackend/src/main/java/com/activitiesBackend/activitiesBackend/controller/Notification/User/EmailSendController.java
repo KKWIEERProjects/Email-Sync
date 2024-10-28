@@ -58,7 +58,8 @@ public class EmailSendController {
         Context context=new Context();
         context.setVariable("event",structure.getEvent());
         context.setVariable("name",structure.getName());
-        context.setVariable("date",structure.getEstimate());
+        context.setVariable("dateStart",structure.getEstimateStart());
+        context.setVariable("dateEnd",structure.getEstimateEnd());
         context.setVariable("venue",structure.getVenue());
         context.setVariable("info",structure.getInfo());
         context.setVariable("id",structure.getId());
@@ -96,7 +97,7 @@ public class EmailSendController {
         System.out.println(status);
         StatusIQ statusIQ=statusService.updateStatus(id,status);
         if(status.equals("Accepted") || status.equals("Rejected")){
-            historyService.record(statusIQ);
+            historyService.record(statusIQ,"NaN","NaN");
             System.out.println(id);
             statusService.remove(id);
         }
@@ -107,10 +108,30 @@ public class EmailSendController {
     }
 
     @GetMapping("/mail/update/{id}")
-    public ResponseEntity updateStatus(@PathVariable String id,@RequestParam String status){
+    public ModelAndView updateStatus(@PathVariable String id,@RequestParam String status
+                                ,@RequestParam String dateStart,@RequestParam String dateEnd){
 
+//        StatusIQ statusIQ=statusService.updateStatus(id,status);
+//        historyService.record(statusIQ);
+//        System.out.println("\nstrructure===========================\n"+id+"\n==============================");
+//        statusService.remove(id);
+//
+//        return ResponseEntity.ok("ok");
+        return new ModelAndView("update").addObject("id",id)
+                .addObject("status",status)
+                .addObject("dateStart",dateStart)
+                .addObject("dateEnd",dateEnd);
+
+    }
+
+    @PostMapping("/mail/update/set")
+    public ResponseEntity getEntity(@RequestParam String id,@RequestParam String status
+            ,@RequestParam String date,@RequestParam String phone){
         StatusIQ statusIQ=statusService.updateStatus(id,status);
-        historyService.record(statusIQ);
+        if(status.equals("Accepted"))
+            historyService.record(statusIQ,date,phone);
+        else
+            historyService.record(statusIQ,"NaN","NaN");
         System.out.println("\nstrructure===========================\n"+id+"\n==============================");
         statusService.remove(id);
 

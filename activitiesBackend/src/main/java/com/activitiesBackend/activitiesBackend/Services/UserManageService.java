@@ -4,6 +4,7 @@ import com.activitiesBackend.activitiesBackend.Repositories.UserRepo;
 import com.activitiesBackend.activitiesBackend.dto.Template;
 import com.activitiesBackend.activitiesBackend.dto.User;
 import com.activitiesBackend.activitiesBackend.exceptions.UserAlreadyThereException;
+import com.activitiesBackend.activitiesBackend.exceptions.UserNotFound;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,17 +54,10 @@ public class UserManageService implements UserManageInterface{
         return userRepo.findUsernamesByAdminId(admin_id);
     }
 
-    public Boolean isAdmin(String id){
-        User user=userRepo.findById(id).orElse(null);
-        if(user.getRoles().equals("ROLE_ADMIN")) {
-            user=null;
-            return true;
-        }
-        return false;
-    }
+
 
     public User getUser(String id) throws Exception {
-        return userRepo.findById(id).orElseThrow(()->new Exception("not found"));
+        return userRepo.findById(id).orElseThrow(()->new UserNotFound("User not found"));
     }
 
     public List<Template> getAllTemplates(String id){
@@ -72,7 +66,7 @@ public class UserManageService implements UserManageInterface{
 
     public void changeToken(String id,String token){
 
-        User user=userRepo.findById(id).orElseThrow();
+        User user=userRepo.findById(id).orElseThrow(()->new UserNotFound("User not found!"));
         user.setToken(token);
         userRepo.save(user);
 
@@ -80,7 +74,7 @@ public class UserManageService implements UserManageInterface{
 
     public void changeEmail(String id,String email){
 
-        User user=userRepo.findById(id).orElseThrow();
+        User user=userRepo.findById(id).orElseThrow(()->new UserNotFound("User not found!"));
         user.setEmail(email);
         userRepo.save(user);
 

@@ -1,6 +1,7 @@
 package com.activitiesBackend.activitiesBackend.Services.NotificationService;
 
 import com.activitiesBackend.activitiesBackend.Repositories.AssignRepos.StatusRepo;
+import com.activitiesBackend.activitiesBackend.exceptions.StatusPostNotFound;
 import com.activitiesBackend.activitiesBackend.model.Notifications.StatusIQ;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class StatusService {
     public StatusIQ updateStatus(String id,String status){
 
         statusRepo.statusById(id,status);
-        return statusRepo.findById(id).orElseThrow();
+        return statusRepo.findById(id).orElseThrow(()->new StatusPostNotFound("Status record not found!"));
     }
 
     public void remove(String id){

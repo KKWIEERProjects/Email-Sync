@@ -1,5 +1,7 @@
 package com.activitiesBackend.activitiesBackend.util.Mail;
 
+import com.activitiesBackend.activitiesBackend.exceptions.EmailAddressException;
+import com.activitiesBackend.activitiesBackend.exceptions.EmailAlreadyExists;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -61,9 +63,11 @@ public class MailUtil {
         }catch(SMTPAddressFailedException ex){
 
             System.out.println(ex);
+            throw new EmailAddressException("Email not found");
         }
         catch(Exception ex){
             System.out.println(ex);
+            throw new EmailAddressException("Error occured");
         }
 
     }

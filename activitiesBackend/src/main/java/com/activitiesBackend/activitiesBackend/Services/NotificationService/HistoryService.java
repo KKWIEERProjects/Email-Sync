@@ -14,12 +14,14 @@ public class HistoryService {
     @Autowired
     private HistoryRepo historyRepo;
 
-    public void record(StatusIQ statusIQ){
+    public void record(StatusIQ statusIQ,String date,String phone){
         History history=History.builder()
                 .event(statusIQ.getEvent())
                 .name(statusIQ.getName())
                 .status(statusIQ.getStatus())
                 .coo(statusIQ.getCoo())
+                .date(date)
+                .phone(phone)
                 .build();
 
         historyRepo.save(history);

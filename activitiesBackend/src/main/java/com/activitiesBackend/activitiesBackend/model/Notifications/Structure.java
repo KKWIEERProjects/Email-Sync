@@ -26,7 +26,10 @@ public class Structure {
      * for dates
      */
     @Column
-    private String estimate;
+    private String estimateStart;
+
+    @Column
+    private String estimateEnd;
 
     @Column
     private String venue;
@@ -39,5 +42,7 @@ public class Structure {
 
     @Column
     private String mail;
+
+
 
 }

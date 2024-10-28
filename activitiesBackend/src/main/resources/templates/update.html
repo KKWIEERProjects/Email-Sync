@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Example 2</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<h3>Using Thymeleaf to Set min and max Dates</h3>
+<form action="/mail/update/set" method="post">
+
+    <input type="hidden" name="id" th:value="${id}">
+
+    <input type="hidden" name="status" th:value="${status}">
+
+
+    <label for="date">Select a date:</label>
+    <input type="date" id="date" name="date"
+           th:attr="min=${dateStart}, max=${dateEnd}">
+
+    <label for="date">Put number:</label>
+    <input type="number" name="phone" />
+
+    <button type="submit" >Confirm</button>
+
+</form>
+<p id="selectedDate"></p>
+<p id="dateRange">Accepted Date Range:
+    <span th:text="${dateStart}"></span> to
+    <span th:text="${dateEnd}"></span>
+</p>
+
+<script>
+    const dp = document.getElementById('date');
+    dp.addEventListener('change', function () {
+        const dateSelect = dp.value;
+        document.getElementById('selectedDate').textContent =
+            'Selected Date: ' + dateSelect;
+    });
+</script>
+</body>
+
+</html>

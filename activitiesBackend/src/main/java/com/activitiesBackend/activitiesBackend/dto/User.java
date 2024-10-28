@@ -1,6 +1,9 @@
 package com.activitiesBackend.activitiesBackend.dto;
 
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase;
 
@@ -18,7 +21,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @NonNull
+    @NotNull(message = "Username cannot be null")
+    @NotBlank(message = "Username cannot be blank")
     @Column(unique = true)
     private String username;
 
@@ -29,15 +33,19 @@ public class User {
     @Column
     private String roles;
 
-    @NonNull
+    @NotNull(message = "Name cannot be null")
+    @NotBlank(message = "Name cannot be blank")
     @Column
     private String name;
 
+    @NotNull(message = "mail cannot be null")
+    @NotBlank(message = "mail cannot be blank")
     @Column(unique = true)
     private String email;
 
     @Column
     private String admin_id;
+
 
     @Column
     private String token;

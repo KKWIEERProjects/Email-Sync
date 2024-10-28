@@ -2,11 +2,14 @@ package com.activitiesBackend.activitiesBackend.Services.NotificationService;
 
 import com.activitiesBackend.activitiesBackend.Repositories.AssignRepos.AssignRepo;
 import com.activitiesBackend.activitiesBackend.Repositories.AssignRepos.StructureRepo;
+import com.activitiesBackend.activitiesBackend.exceptions.StructureRecordNotFound;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Assign;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -20,11 +23,16 @@ public class StructureService {
                      String venue,String coo,String mail){
 
         //String date=startDate.toString() + endDate.toString();
-        String date="NaN";
+        LocalDate minDate = LocalDate.now();
+        LocalDate maxDate = LocalDate.now().plusDays(10);
+
+        // Format the dates in `yyyy-MM-dd` format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Structure structure=Structure.builder()
                 .id(assign.getId())
                 .name(name)
-                .estimate(date)
+                .estimateStart(minDate.format(formatter))
+                .estimateEnd(maxDate.format(formatter))
                 .info(assign.getInfo())
                 .event(assign.getEvent())
                 .venue(venue)
@@ -39,9 +47,8 @@ public class StructureService {
 
     public Structure getStructure(String id){
         System.out.println("last stage");
-        Structure structure=structureRepo.findById(id).orElse(null);
-        if(structure==null)
-            System.out.println("null");
+        Structure structure=structureRepo.findById(id).orElseThrow(()->new StructureRecordNotFound("Record not found"));
+
         return structure;
     }
 

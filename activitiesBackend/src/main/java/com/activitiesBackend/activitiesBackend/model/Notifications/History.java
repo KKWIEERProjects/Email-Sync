@@ -29,4 +29,10 @@ public class History {
     @Column
     private String coo;
 
+    @Column
+    private String date;
+
+    @Column
+    private String phone;
+
 }

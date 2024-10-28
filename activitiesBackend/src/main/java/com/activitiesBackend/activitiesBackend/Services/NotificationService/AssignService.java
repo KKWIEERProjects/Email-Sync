@@ -1,6 +1,7 @@
 package com.activitiesBackend.activitiesBackend.Services.NotificationService;
 
 import com.activitiesBackend.activitiesBackend.Repositories.AssignRepos.AssignRepo;
+import com.activitiesBackend.activitiesBackend.exceptions.PostNotFoundById;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Assign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class AssignService {
 
     public void setPost(String event,String coo,String info){
 
-        System.out.println("==========inside set post=======");
+
         Assign assign=Assign.builder()
                 .coordinator(coo)
                 .event(event)
@@ -37,8 +38,8 @@ public class AssignService {
     }
 
     public Assign getPostById(String id){
-        System.out.println("assign 1");
-        return assignRepo.findById(id).orElseThrow();
+
+        return assignRepo.findById(id).orElseThrow(()->new PostNotFoundById("Post not found"));
     }
 
     public void remove(Assign assign){
@@ -46,7 +47,7 @@ public class AssignService {
     }
 
     public void removeById(String id){
-        Assign assign=assignRepo.findById(id).orElseThrow();
+        Assign assign=assignRepo.findById(id).orElseThrow(()->new PostNotFoundById("Post not found"));
         assignRepo.delete(assign);
     }
 

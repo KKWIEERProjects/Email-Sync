@@ -31,7 +31,13 @@
         .label {
             font-weight: bold;
         }
+        a:link {
+          color: white;
+          background-color: transparent;
+          text-decoration: none;
+        }
         .button {
+
             display: inline-block;
             margin-top: 20px;
             padding: 10px 20px;
@@ -53,7 +59,7 @@
     <p>
         We are pleased to invite you as a keynote speaker for our upcoming event,
         <span class="label" th:text="${event}">Expert Talk</span>,
-        scheduled for <span th:text="${date}">January 15, 2024</span> at
+        scheduled for <span th:text="${dateStart} + '-' + ${dateEnd}">January 15, 2024</span> at
         <span th:text="${time}">10:00 AM</span> at <span th:text="${venue}">Conference Hall, XYZ Venue</span>.
     </p>
 
@@ -79,9 +85,9 @@
         <strong>The Event Coordination Team</strong><br>
         XYZ Organization</p>
 
-   <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Accepted'}" class="button">Accept </a>
+   <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Accepted'+ '&dateStart=' + ${dateStart} + '&dateEnd=' + ${dateEnd}}" class="button" >Accept </a>
 
-    <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Rejected'}" class="button">Rejected </a>
+    <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Rejected'+ '&dateStart=' + ${dateStart} + '&dateEnd=' + ${dateEnd}}" class="button">Rejected </a>
 </div>
 
 </body>
