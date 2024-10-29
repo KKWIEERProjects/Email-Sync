@@ -6,24 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Co-ordinator</title>
     <link rel="stylesheet" href="login/coordinator.css">
+    <link rel="stylesheet" href="login/toast.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
-    <style>
-        .profile-pic {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #3498db; /* Choose any color */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: white;
-        font-weight: bold;
-    }
-    </style>
+
 </head>
 
 <body class="coordinator-page">
@@ -32,7 +20,7 @@
         <div class="div-2">
             <div class="div-3"></div>
             <div class="mspv">
-                <a href="index.html">MSPV</a>
+                <a href="index.html">Email Sync</a>
             </div>
         </div>
         <div class="div-4">
@@ -201,8 +189,28 @@
             </tbody>
         </table>
 
-
+    </main>
 </div>
+<div id="toast" class="toast" th:if="${param.errorMessage != null}" th:text="${param.errorMessage}"></div>
+
+<script>
+    // Show toast if errorMessage exists
+    var toast = document.getElementById("toast");
+    if (toast) {
+        toast.classList.add("show");
+        setTimeout(function(){ toast.classList.remove("show"); }, 3000); // Hide after 3 seconds
+    }
+    if (window.location.search.includes('errorMessage')) {
+        const url = new URL(window.location);
+        url.searchParams.delete('errorMessage');
+        window.history.replaceState({}, document.title, url);
+    }
+    if (window.location.search.includes('msg')) {
+        const url = new URL(window.location);
+        url.searchParams.delete('msg');
+        window.history.replaceState({}, document.title, url);
+    }
+</script>
 <script src="js/coordinator.js"></script>
 </body>
 

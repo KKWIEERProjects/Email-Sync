@@ -18,10 +18,21 @@ public class ErrorHandler{
     Logger logger= LoggerFactory.getLogger(ErrorHandler.class);
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleGlobalExce(HttpServletRequest request,Exception ex,ModelAndView modelAndView){
+    public ModelAndView handleGlobalExce(HttpServletRequest request,Exception ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView(modelAndView.getViewName()).
+
+        String referer = request.getHeader("Referer");
+
+        // Create ModelAndView with referer as the view name if available
+        ModelAndView modelAndView;
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
                     addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage","Error");
 
@@ -32,9 +43,18 @@ public class ErrorHandler{
     public ModelAndView handlePostNotThere(HttpServletRequest request,PostNotFoundById ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView("error").
-                addObject("msg", ex.getMessage());
+        ModelAndView modelAndView;
 
+        String referer = request.getHeader("Referer");
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+                .addObject("errorMessage",ex.getMessage());
 
     }
 
@@ -42,8 +62,19 @@ public class ErrorHandler{
     public ModelAndView handleUserThere(HttpServletRequest request,UserAlreadyThereException ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView("error").
-                addObject("msg", ex.getMessage());
+
+        ModelAndView modelAndView;
+        String referer = request.getHeader("Referer");
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+                .addObject("errorMessage",ex.getMessage());
+
 
 
     }
@@ -52,19 +83,40 @@ public class ErrorHandler{
     public ModelAndView handleStatusNOT_FOUND(HttpServletRequest request, StatusPostNotFound ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView("error").
-                addObject("msg", ex.getMessage());
+
+        ModelAndView modelAndView;
+        String referer = request.getHeader("Referer");
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+                .addObject("errorMessage",ex.getMessage());
+
 
 
     }
 
     @ExceptionHandler(StructureRecordNotFound.class)
-    public ModelAndView handleStructureNOT_FOUND(HttpServletRequest request, StructureRecordNotFound ex,ModelAndView modelAndView){
+    public ModelAndView handleStructureNOT_FOUND(HttpServletRequest request, StructureRecordNotFound ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView(modelAndView.getViewName()).
-                addObject("msg", ex.getMessage())
+
+        ModelAndView modelAndView;
+        String referer = request.getHeader("Referer");
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
+
 
 
     }
@@ -73,19 +125,40 @@ public class ErrorHandler{
     public ModelAndView handleStructureNOT_FOUND(HttpServletRequest request, EmailAlreadyExists ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView("error").
-                addObject("msg", ex.getMessage());
+
+        ModelAndView modelAndView;
+        String referer = request.getHeader("Referer");
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+                .addObject("errorMessage",ex.getMessage());
+
 
 
     }
 
     @ExceptionHandler(BlankSpaceException.class)
-    public ModelAndView blank(HttpServletRequest request,BlankSpaceException ex,ModelAndView modelAndView){
+    public ModelAndView blank(HttpServletRequest request,BlankSpaceException ex){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView(modelAndView.getViewName()).
-                addObject("msg", ex.getMessage())
+
+        ModelAndView modelAndView;
+        String referer = request.getHeader("Referer");
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
+
     }
 
 
