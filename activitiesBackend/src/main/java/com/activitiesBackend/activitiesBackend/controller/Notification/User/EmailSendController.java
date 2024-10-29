@@ -93,7 +93,7 @@ public class EmailSendController {
 
     @GetMapping("/allstatus")
     public ModelAndView getAllStatus(HttpSession session){
-        return new ModelAndView("status/status").addObject("status",statusService.get((String) session.getAttribute("user")));
+        return new ModelAndView("status/status").addObject("status",statusService.get((String) session.getAttribute("fullname")));
     }
 
     @PostMapping("/update")
@@ -111,7 +111,7 @@ public class EmailSendController {
 
     }
 
-    @GetMapping("/api/mail/update/{id}")
+    @GetMapping("/mail/update/{id}")
     public ModelAndView updateStatus(@PathVariable String id,@RequestParam String status
                                 ,@RequestParam String dateStart,@RequestParam String dateEnd){
 
@@ -122,13 +122,13 @@ public class EmailSendController {
 
     }
 
-    @GetMapping("/api/mail/rejected/{id}")
+    @GetMapping("/mail/rejected/{id}")
     public ModelAndView updateRejected(@PathVariable String id,@RequestParam String status){
         structureService.getStructure(id);
         return new ModelAndView("updates/updateRejected");
     }
 
-    @PostMapping("/api/mail/update/set")
+    @PostMapping("/mail/update/set")
     public ResponseEntity getEntity(@RequestParam String id,@RequestParam String status
             ,@RequestParam String date,@RequestParam String phone){
         StatusIQ statusIQ=statusService.updateStatus(id,status);
@@ -142,7 +142,7 @@ public class EmailSendController {
 
     }
 
-    @PostMapping("/api/mail/update/reject")
+    @PostMapping("/mail/update/reject")
     public ResponseEntity getRejection(@RequestParam String id,@RequestParam String status
             ){
         StatusIQ statusIQ=statusService.updateStatus(id,status);

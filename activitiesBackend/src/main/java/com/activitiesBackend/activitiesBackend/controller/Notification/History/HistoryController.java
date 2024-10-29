@@ -15,7 +15,7 @@ public class HistoryController {
 
     @GetMapping("/history")
     public ModelAndView getHistory(HttpSession session){
-        return new ModelAndView("history").addObject("hits",historyService.getHistory((String) session.getAttribute("user")));
+        return new ModelAndView("history").addObject("hits",historyService.getHistory((String) session.getAttribute("fullname")));
     }
 
 

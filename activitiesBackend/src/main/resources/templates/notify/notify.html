@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +21,7 @@
         <div class="div-2">
             <div class="div-3"></div>
             <div class="mspv">
-                <a href="index.html">Email Sync</a>
+                <a href="/notify">Email Sync</a>
             </div>
         </div>
         <div class="div-4">
@@ -140,14 +141,14 @@
             </tr>
             </thead>
             <tbody>
-            <!-- Thymeleaf iteration over users to populate table rows -->
-            <tr th:each="post : ${posts}">
+
+            <tr th:each="post ,iterStat: ${posts}">
                 <td th:text="${post.getEvent()}"></td>
                 <td th:text="${post.getInfo()}"></td>
                 <td>
-                    <!--            <form th:action="@{/structure}" method="get">-->
+
                     <button type="submit" class="status confirmed" title="Edit"  onclick="showPopup()" name="id">Add Detail</button>
-                    <!--            </form>-->
+
 
                 </td>
                 <div class="overlay" id="overlay"></div>
@@ -189,28 +190,29 @@
             </tbody>
         </table>
 
-    </main>
+
 </div>
+
 <div id="toast" class="toast" th:if="${param.errorMessage != null}" th:text="${param.errorMessage}"></div>
 
-<script>
-    // Show toast if errorMessage exists
-    var toast = document.getElementById("toast");
-    if (toast) {
-        toast.classList.add("show");
-        setTimeout(function(){ toast.classList.remove("show"); }, 3000); // Hide after 3 seconds
-    }
-    if (window.location.search.includes('errorMessage')) {
-        const url = new URL(window.location);
-        url.searchParams.delete('errorMessage');
-        window.history.replaceState({}, document.title, url);
-    }
-    if (window.location.search.includes('msg')) {
-        const url = new URL(window.location);
-        url.searchParams.delete('msg');
-        window.history.replaceState({}, document.title, url);
-    }
-</script>
+<!--<script>-->
+<!--    // Show toast if errorMessage exists-->
+<!--    var toast = document.getElementById("toast");-->
+<!--    if (toast) {-->
+<!--        toast.classList.add("show");-->
+<!--        setTimeout(function(){ toast.classList.remove("show"); }, 3000); // Hide after 3 seconds-->
+<!--    }-->
+<!--    if (window.location.search.includes('errorMessage')) {-->
+<!--        const url = new URL(window.location);-->
+<!--        url.searchParams.delete('errorMessage');-->
+<!--        window.history.replaceState({}, document.title, url);-->
+<!--    }-->
+<!--    if (window.location.search.includes('msg')) {-->
+<!--        const url = new URL(window.location);-->
+<!--        url.searchParams.delete('msg');-->
+<!--        window.history.replaceState({}, document.title, url);-->
+<!--    }-->
+<!--</script>-->
 <script src="js/coordinator.js"></script>
 </body>
 

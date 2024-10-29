@@ -32,7 +32,7 @@ public class AssignPostController {
     }
 
     @PostMapping("/admin/gotoassign")
-    public ModelAndView gotoassign(@NonNull @RequestParam String id){
+    public ModelAndView gotoassign(@RequestParam String id){
         System.out.println("\n======================"+id+"==============================\n");
         return new ModelAndView("admin/assign").addObject("cus",id);
     }

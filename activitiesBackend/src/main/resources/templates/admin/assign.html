@@ -32,16 +32,10 @@
     <div class="upcoming-events-2" th:value="'Assign to '+${cus}"></div>
 
     <div>
-<!--        <form method="post" action="/admin/assign">-->
-<!--            <input type="hidden" th:value="${cus}" name="cus" readonly>-->
-<!--            <input type="text" name="event" required>-->
-<!--            <br>-->
-<!--            <input type="text" name="info" required>-->
-<!--            <br>-->
-<!--            <button type="submit" class="button-29" role="button">Button</button>-->
-<!--        </form>-->
+
 
         <form  id="event-form" action="/admin/assign" method="post">
+            <input type="hidden" th:value="${cus}" name="cus">
             Event:<input type="text" name="event"><br>
             Description:<input type="text" name="info"><br>
 

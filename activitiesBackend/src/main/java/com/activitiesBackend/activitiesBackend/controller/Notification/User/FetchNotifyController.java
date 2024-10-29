@@ -6,6 +6,8 @@ import com.activitiesBackend.activitiesBackend.model.Notifications.Assign;
 import com.activitiesBackend.activitiesBackend.model.Notifications.Structure;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ import java.util.List;
 @RestController
 public class FetchNotifyController {
 
+
+    Logger logger= LoggerFactory.getLogger(FetchNotifyController.class);
+
     @Autowired
     private AssignService assignService;
 
@@ -24,12 +29,10 @@ public class FetchNotifyController {
     private StructureService structureService;
 
     @GetMapping("/notify")
-    public ModelAndView getNotification(HttpSession session){
-        String user=(String) session.getAttribute("user");
+    public ModelAndView getNotification(HttpSession session,@RequestParam(required = false) String msg,@RequestParam(required = false) String errorMessage){
+        String user=(String) session.getAttribute("fullname");
 
-        //assignService.getPost(user);
-        //user=null;
-//        return assignService.getPost(user);
+
         return new ModelAndView("notify/notify").addObject("posts",assignService.getPost(user));
     }
 
