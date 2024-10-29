@@ -18,13 +18,15 @@ public class UserDetailModel implements UserDetails {
 
     private String id;
 
+    private String name;
+
     private List<GrantedAuthority> authorities;
 
     public UserDetailModel(User user){
         this.id=user.getId();
         this.username=user.getUsername();
         this.password=user.getPassword();
-
+        this.name=user.getName();
         this.authorities= Stream.of(user.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -40,13 +42,17 @@ public class UserDetailModel implements UserDetails {
         return this.password;
     }
 
-    @Override
-    public String getUsername() {
-        return this.username;
+    public String getName() {
+        return this.name;
     }
 
     public String getId(){
         return this.id;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
     }
 
     @Override

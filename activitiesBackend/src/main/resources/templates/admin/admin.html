@@ -54,22 +54,15 @@
 
 
                             <div class="menu">
-                                <h3>
-                                    Hod Admin
-                                    <div>
-                                        MCA Department
-                                    </div>
+                                <h3 th:text="${session.user}">
+
                                 </h3>
                                 <ul>
                                     <li>
                                         <span class="material-icons icons-size">person</span>
-                                        <a href="event.html">Hod admin</a>
+                                        <a href="/profile">Profile</a>
                                     </li>
 
-                                    <li>
-                                        <span class="material-icons icons-size">person</span>
-                                        <a href="coordinator.html">Co-ordinator admin</a>
-                                    </li>
 
                                 </ul>
                             </div>
@@ -94,16 +87,22 @@
         <aside class="sidebar">
             <div class="profile">
                 <div class="profile-pic"></div>
-                <h2 th:text="${session.fullname}"></h2>
+                <h2 th:text="${session.user}"></h2>
 
             </div>
             <nav>
                 <ul>
+                    <li><a href="/notify"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                        Notifications</a></li>
                     <li><a href="/allsend"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
-                        To send</a></li>
+                        Email Structure</a></li>
                     <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin" id="coordinators-link"><i class="fa fa-address-book-o"
                                                                                                          style="font-size:26px; padding-right:30px"></i>
                         Coordinators</a></li>
+                    <li><a href="/allstatus"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                        Status</a></li>
+                    <li><a href="/history"><i class="fa fa-calendar" style="font-size:26px; padding-right:30px"></i>
+                        History</a></li>
                 </ul>
             </nav>
             <form th:action="@{/logout}">
@@ -138,7 +137,7 @@
                         Name:<input type="text" name="name"><br>
                         Email:<input type="email" name="email"><br>
 
-                        <input type="submit" value="create new user">
+                        <input type="submit" value="Create New User">
                     </form>
 
 
@@ -214,6 +213,16 @@
 
 
     </div>
+    <div id="toast" class="toast" th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
+
+    <script>
+        // Show toast if errorMessage exists
+        var toast = document.getElementById("toast");
+        if (toast) {
+            toast.classList.add("show");
+            setTimeout(function(){ toast.classList.remove("show"); }, 3000); // Hide after 3 seconds
+        }
+    </script>
     <script src="js/coordinator.js"></script>
 <!--    <script src="js/admin.js"></script>-->
     </body>

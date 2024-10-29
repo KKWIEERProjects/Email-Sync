@@ -111,7 +111,7 @@ class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler
                                         Authentication authentication) throws IOException, ServletException {
 
         UserDetailModel userDetails = (UserDetailModel)  authentication.getPrincipal();
-        request.getSession().setAttribute("user", authentication.getName());
+        request.getSession().setAttribute("user", userDetails.getName());
         request.getSession().setAttribute("fullname", userDetails.getUsername());
         request.getSession().setAttribute("id",userDetails.getId());
         // Redirect to default URL or any other logic

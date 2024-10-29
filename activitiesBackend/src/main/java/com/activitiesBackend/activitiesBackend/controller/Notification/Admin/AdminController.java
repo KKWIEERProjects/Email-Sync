@@ -21,7 +21,6 @@ public class AdminController {
 
     @GetMapping("/admin")
     public ModelAndView getAdmin(HttpSession session){
-        System.out.println("Inside admin");
         String id=(String) session.getAttribute("id");
         return new ModelAndView("admin/admin").addObject("coos",userManageService.getWorkers(id));
     }

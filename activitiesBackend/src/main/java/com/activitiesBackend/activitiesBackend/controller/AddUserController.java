@@ -2,6 +2,7 @@ package com.activitiesBackend.activitiesBackend.controller;
 
 import com.activitiesBackend.activitiesBackend.Services.UserManageService;
 import com.activitiesBackend.activitiesBackend.dto.User;
+import com.activitiesBackend.activitiesBackend.exceptions.BlankSpaceException;
 import com.activitiesBackend.activitiesBackend.exceptions.UserAlreadyThereException;
 import com.github.javafaker.Faker;
 import jakarta.servlet.http.HttpSession;
@@ -42,7 +43,10 @@ public class AddUserController {
                                 @RequestParam String email,
                                 HttpSession session)
             throws UserAlreadyThereException {
-        System.out.println(roles);
+        if(name.equals("") || name==null)
+            throw new BlankSpaceException("Name cannot be blank");
+        if(email.equals("") || name==null)
+            throw  new BlankSpaceException("Email cannot be blank");
         Faker faker=new Faker();
         String username=faker.superhero().prefix()+faker.name().firstName()+faker.address().buildingNumber();
         User user=null;

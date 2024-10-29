@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@SessionAttributes("fullname")
+@SessionAttributes("user")
 @RestController
 public class FetchNotifyController {
 

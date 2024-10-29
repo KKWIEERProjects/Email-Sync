@@ -18,10 +18,10 @@ public class ErrorHandler{
     Logger logger= LoggerFactory.getLogger(ErrorHandler.class);
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleGlobalExce(HttpServletRequest request,Exception ex){
+    public ModelAndView handleGlobalExce(HttpServletRequest request,Exception ex,ModelAndView modelAndView){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView("error").
+        return new ModelAndView(modelAndView.getViewName()).
                     addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage","Error");
 
@@ -59,10 +59,10 @@ public class ErrorHandler{
     }
 
     @ExceptionHandler(StructureRecordNotFound.class)
-    public ModelAndView handleStructureNOT_FOUND(HttpServletRequest request, StructureRecordNotFound ex){
+    public ModelAndView handleStructureNOT_FOUND(HttpServletRequest request, StructureRecordNotFound ex,ModelAndView modelAndView){
         System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
         logger.error(ex.toString());
-        return new ModelAndView("error").
+        return new ModelAndView(modelAndView.getViewName()).
                 addObject("msg", ex.getMessage())
                 .addObject("errorMessage",ex.getMessage());
 
@@ -79,31 +79,14 @@ public class ErrorHandler{
 
     }
 
-//    @GetMapping("/error")
-//    public ModelAndView getMethodName(HttpServletRequest request) {
-//
-//        Integer status=Integer.valueOf(
-//                request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE)
-//                        .toString()
-//        );
-//
-//        if(status== HttpStatus.NOT_FOUND.value()){
-//            return new
-//                    ModelAndView("error").
-//                    addObject("msg", "RESOURCE NOT FOUND");
-//        }else if (status == HttpStatus.FORBIDDEN.value()) {
-//            return new
-//                    ModelAndView("error").
-//                    addObject("msg", "FORBIDDEN ACCESS");
-//        }else if(status == HttpStatus.INTERNAL_SERVER_ERROR.value()){
-//            return new
-//                    ModelAndView("error").
-//                    addObject("msg", "SERVER ERROR");
-//        }else{
-//            return new
-//                    ModelAndView("error").
-//                    addObject("msg", "AN ERROR OCCURRED");
-//        }
-//    }
+    @ExceptionHandler(BlankSpaceException.class)
+    public ModelAndView blank(HttpServletRequest request,BlankSpaceException ex,ModelAndView modelAndView){
+        System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
+        logger.error(ex.toString());
+        return new ModelAndView(modelAndView.getViewName()).
+                addObject("msg", ex.getMessage())
+                .addObject("errorMessage",ex.getMessage());
+    }
+
 
 }
