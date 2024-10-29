@@ -127,10 +127,12 @@
             <!-- <div class="divider">or</div>
 
             <button type="button" class="google-signin">Sign in with Google</button> -->
-
+            <div th:if="${ param.error!= null}">
+                <p th:text="${param.error}"></p>
+            </div>
     </div>
 </main>
-<div id="toast" class="toast" th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
+<div id="toast" class="toast" th:if="${ param.error!= null}" th:text="${param.error}"></div>
 
 <script src="login.js"></script>
 </body>

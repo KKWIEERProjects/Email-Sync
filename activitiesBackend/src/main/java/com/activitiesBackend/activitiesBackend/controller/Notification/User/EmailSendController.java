@@ -111,7 +111,7 @@ public class EmailSendController {
 
     }
 
-    @GetMapping("/mail/update/{id}")
+    @GetMapping("/api/mail/update/{id}")
     public ModelAndView updateStatus(@PathVariable String id,@RequestParam String status
                                 ,@RequestParam String dateStart,@RequestParam String dateEnd){
 
@@ -122,13 +122,13 @@ public class EmailSendController {
 
     }
 
-    @GetMapping("/mail/rejected/{id}")
+    @GetMapping("/api/mail/rejected/{id}")
     public ModelAndView updateRejected(@PathVariable String id,@RequestParam String status){
         structureService.getStructure(id);
         return new ModelAndView("updates/updateRejected");
     }
 
-    @PostMapping("/mail/update/set")
+    @PostMapping("/api/mail/update/set")
     public ResponseEntity getEntity(@RequestParam String id,@RequestParam String status
             ,@RequestParam String date,@RequestParam String phone){
         StatusIQ statusIQ=statusService.updateStatus(id,status);
@@ -142,7 +142,7 @@ public class EmailSendController {
 
     }
 
-    @PostMapping("/mail/update/reject")
+    @PostMapping("/api/mail/update/reject")
     public ResponseEntity getRejection(@RequestParam String id,@RequestParam String status
             ){
         StatusIQ statusIQ=statusService.updateStatus(id,status);
