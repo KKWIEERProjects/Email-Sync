@@ -10,6 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #3498db; /* Choose any color */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+    }
+    </style>
 </head>
 
 <body class="coordinator-page">
@@ -89,8 +104,11 @@
 <div class="container">
     <aside class="sidebar">
         <div class="profile">
-            <div class="profile-pic"></div>
-            <h2 th:text="${session.fullname}"></h2>
+            <div class="profile-pic">
+<!--                // + session.user.split(' ')[1].substring(0, 1)-->
+                <span th:text="${session.user.substring(0, 1).toUpperCase()}"></span>
+            </div>
+            <h2 th:text="${session.user}"></h2>
 
         </div>
         <nav>
