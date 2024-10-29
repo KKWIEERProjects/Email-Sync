@@ -13,10 +13,34 @@ Features
 
 ## Screenshots
 
-![image](https://github.com/user-attachments/assets/7b8cf3d4-64f3-40b7-bea5-272ec739dfbc)
-![image](https://github.com/user-attachments/assets/55aff060-d830-474b-b8c1-810ed4c6bca5)
+![image](https://github.com/user-attachments/assets/eda008a2-e08d-4247-bf0c-b4792911551e)
+![image](https://github.com/user-attachments/assets/77391001-6198-49d9-b94e-361fa0ebbb35)
+
 auto generate username and password
 ![image](https://github.com/user-attachments/assets/2dfc88d7-dba2-413f-b15d-c2cd5f93c244)
+
+Assign tasks:
+![image](https://github.com/user-attachments/assets/cbe334d2-e73b-4e55-8b54-9325ac4c8fb3)
+
+Notification for the assigne
+![image](https://github.com/user-attachments/assets/959e289d-cb52-4252-b2e3-8bfb97a3fb18)
+
+Structuring the post:
+![image](https://github.com/user-attachments/assets/585746da-2703-4db8-8b03-e66ebd8b345a)
+
+Before send:
+![image](https://github.com/user-attachments/assets/fdb9965e-a229-434d-ae05-14ab5eefce37)
+
+Email acceptance and rejection button in email itself
+![image](https://github.com/user-attachments/assets/ee1525e8-b7bb-4ea5-be0b-c337b8f8f8da)
+
+After pressing the button(say accept):
+[the calender is restericted in dates from start and 10 days ahead)
+![image](https://github.com/user-attachments/assets/51fe6271-b225-46c3-ad17-087eabadbe7e)
+![image](https://github.com/user-attachments/assets/6a8142d6-34f8-4059-a17b-560c2319025b)
+
+
+
 
 ## Idea
 
