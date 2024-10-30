@@ -90,9 +90,9 @@ git clone [https://github.com/KKWIEERProjects/Email-Sync](https://github.com/KKW
 
 cd activitiesBackend
 
-Set Up Database: Update application.properties:
+Set Up Database: 
 
-properties
+add db.config.properties file in reource:
 
 spring.datasource.url=jdbc:mysql://localhost:3306/your_db_name
 spring.datasource.username=your_username
