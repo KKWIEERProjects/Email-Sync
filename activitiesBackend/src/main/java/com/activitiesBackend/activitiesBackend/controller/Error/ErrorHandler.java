@@ -17,27 +17,27 @@ public class ErrorHandler{
 
     Logger logger= LoggerFactory.getLogger(ErrorHandler.class);
 
-//    @ExceptionHandler(Exception.class)
-//    public ModelAndView handleGlobalExce(HttpServletRequest request,Exception ex){
-//        System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
-//        logger.error(ex.toString());
-//
-//        String referer = request.getHeader("Referer");
-//
-//        // Create ModelAndView with referer as the view name if available
-//        ModelAndView modelAndView;
-//        if (referer != null) {
-//            modelAndView = new ModelAndView("redirect:" + referer);
-//        } else {
-//
-//            modelAndView = new ModelAndView("error");
-//        }
-//        return modelAndView.
-//                    addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
-//                .addObject("errorMessage","Error");
-//
-//
-//    }
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleGlobalExce(HttpServletRequest request,Exception ex){
+        System.err.println("Request:"+request.getRequestURL() + "raised" + ex);
+        logger.error(ex.toString());
+
+        String referer = request.getHeader("Referer");
+
+        // Create ModelAndView with referer as the view name if available
+        ModelAndView modelAndView;
+        if (referer != null) {
+            modelAndView = new ModelAndView("redirect:" + referer);
+        } else {
+
+            modelAndView = new ModelAndView("error");
+        }
+        return modelAndView.
+                    addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+                .addObject("errorMessage","Error");
+
+
+    }
 
     @ExceptionHandler(PostNotFoundById.class)
     public ModelAndView handlePostNotThere(HttpServletRequest request,PostNotFoundById ex){

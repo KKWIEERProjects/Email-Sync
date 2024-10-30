@@ -29,20 +29,9 @@ public class LoginControl {
 
 
 
-    /*
-    do not use this mapping
-     */
-//    @Deprecated
-//    @PostMapping("/register")
-//    public void reg(@RequestParam(value = "username") String username,@RequestParam String password) throws UserAlreadyThereException {
-//        System.out.println("ahsghjasdjahsdk");
-//        User user= User.builder().username(username).password(passwordEncoder.encode(password)).roles("ROLE_ADMIN").build();
-////        user.setUsername(username);
-////        user.setPassword(passwordEncoder.encode(password));
-////        user.setRoles("ROLE_ADMIN");
-//        System.out.println(user.toString());
-//        userManageService.save(user);
-//    }
+
+
+
 
 
 }
