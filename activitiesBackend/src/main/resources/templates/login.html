@@ -5,130 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Sync Login</title>
     <link rel="stylesheet" href="login/toast.css">
-    <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: Arial, sans-serif;
-        }
+    <link rel="stylesheet" href="login/getIn.css">
 
-        body, html {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .container {
-          display: flex;
-          width: 100vw;
-          height: 100vh;
-        }
-
-        /* Left Side - Text and Image */
-        .left-section {
-          width: 40%;
-          background-color: #f7f7f7;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .left-section h1 {
-          color: #003366;
-          font-size: 2em;
-          margin-bottom: 10px;
-        }
-
-        .left-section p {
-          color: #666;
-          font-size: 1.1em;
-          text-align: center;
-          margin-bottom: 20px;
-        }
-
-        .left-section img {
-          width: 80%;
-          max-width: 400px;
-        }
-
-        /* Right Side - Login Form */
-        .right-section {
-          width: 60%;
-          background-color: #3498db;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          color: #ffffff;
-        }
-
-        .right-section .logo {
-          font-size: 1.5em;
-          font-weight: bold;
-          margin-bottom: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .right-section h2 {
-          font-size: 1.8em;
-          font-weight: bold;
-          margin-bottom: 20px;
-          border-bottom: 3px solid #ffffff;
-          padding-bottom: 5px;
-        }
-
-        .right-section form {
-          width: 100%;
-          max-width: 320px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .right-section input[type="text"],
-        .right-section input[type="password"] {
-          width: 100%;
-          padding: 10px;
-          margin: 10px 0;
-          border: none;
-          border-radius: 5px;
-          font-size: 1em;
-          color: #333;
-        }
-
-        .right-section input[type="submit"] {
-          width: 100%;
-          padding: 10px;
-          margin-top: 15px;
-          border: none;
-          border-radius: 5px;
-          background-color: grey;
-          color: #fff;
-          font-size: 1em;
-          cursor: pointer;
-          transition: background-color 0.3s;
-        }
-
-        .right-section input[type="submit"]:hover {
-          background-color: #494848;
-        }
-
-        .right-section a {
-          color: #ffffff;
-          text-decoration: none;
-          font-size: 0.9em;
-          margin-top: 10px;
-        }
-
-        .right-section a:hover {
-          text-decoration: underline;
-        }
-    </style>
     <script>
         function showToast() {
            const toast = document.getElementById('toast');
@@ -148,6 +26,7 @@
 <div class="container">
     <!-- Left Section -->
     <div class="left-section">
+
         <h1>Email Sync</h1>
         <p>Sign in to Manage and Participate in College Events</p>
         <img th:src="@{/img/graphic5.svg}" alt="Illustration">
@@ -163,6 +42,9 @@
             <input type="submit" value="Login">
             <a href="#">Forgot password?</a>
         </form>
+        <div class="quote">
+            <p>"Empowering you to stay connected and informed!"</p>
+        </div>
         <div th:if="${param.error != null}">
             <div id="toast" class="toast" th:text="'Wrong username or password'"></div>
         </div>
