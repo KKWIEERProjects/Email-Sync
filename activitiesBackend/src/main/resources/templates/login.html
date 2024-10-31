@@ -129,6 +129,20 @@
           text-decoration: underline;
         }
     </style>
+    <script>
+        function showToast() {
+           const toast = document.getElementById('toast');
+           if (toast) {
+               toast.classList.add('show');
+               setTimeout(() => { toast.classList.remove('show'); }, 3000); // Hide after 3 seconds
+           }
+       }
+
+       // Show the toast if there's an error message
+       window.onload = function() {
+           /*[[${param.error != null}]]*/ showToast();
+       };
+    </script>
 </head>
 <body>
 <div class="container">
@@ -149,7 +163,7 @@
             <input type="submit" value="Login">
             <a href="#">Forgot password?</a>
         </form>
-        <div th:if="${ param.error!= null}">
+        <div th:if="${param.error != null}">
             <div id="toast" class="toast" th:text="'Wrong username or password'"></div>
         </div>
 
