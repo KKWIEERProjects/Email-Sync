@@ -23,11 +23,14 @@ public class LoginControl {
 
     @GetMapping("/login")
     public ModelAndView modelAndView(){
-      //  System.out.println("jdjrhsdfj");
+
         return new ModelAndView("login");
     }
 
-
+    @GetMapping("/")
+    public ModelAndView modelAnd(){
+        return new ModelAndView("redirect:/notify");
+    }
 
 
 

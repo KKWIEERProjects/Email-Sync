@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * once we switch to react we will not use this
  * but until then... :)
+ * with some changes we will use this
  */
 @ControllerAdvice
 public class ErrorHandler{
@@ -35,7 +36,6 @@ public class ErrorHandler{
         return modelAndView.
                     addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage","Error");
-
 
     }
 
@@ -74,8 +74,6 @@ public class ErrorHandler{
         return modelAndView.
                 addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
-
-
 
     }
 
