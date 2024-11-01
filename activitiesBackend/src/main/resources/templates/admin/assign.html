@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/login/index.css}">
+    <link rel="stylesheet" href="/login/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Assign</title>
@@ -36,8 +36,8 @@
 
         <form  id="event-form" action="/admin/assign" method="post">
             <input type="hidden" th:value="${cus}" name="cus">
-            Event:<input type="text" name="event"><br>
-            Description:<input type="text" name="info"><br>
+            Event:<input type="text" name="event" required><br>
+            Description:<textarea  name="info" required></textarea><br>
 
             <input type="submit" value="Assign Event">
         </form>
@@ -72,7 +72,21 @@
              border-radius: 4px;
              font-size: 16px;
          }
+    #event-form input[type="text"],
+    #event-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        resize: vertical; /* Allow the textarea to be resized vertically */
+    }
 
+    #event-form textarea {
+        height: 100px; /* Set initial height for description */
+    }
          /* Specific styling for the description input (name="info") */
          #event-form input[name="info"] {
              height: 80px; /* Increased height for the description field */
