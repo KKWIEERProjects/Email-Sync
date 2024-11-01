@@ -33,8 +33,8 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                    addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage","Error");
 
     }
@@ -52,8 +52,8 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
 
     }
@@ -71,8 +71,8 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
 
     }
@@ -90,10 +90,9 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
-
 
 
     }
@@ -111,11 +110,9 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
-
-
 
     }
 
@@ -132,10 +129,9 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
-
 
 
     }
@@ -153,9 +149,10 @@ public class ErrorHandler{
 
             modelAndView = new ModelAndView("error");
         }
-        return modelAndView.
-                addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
+        return modelAndView
+                .addObject("msg", "AN UNEXPECTED ERROR OCCURRED")
                 .addObject("errorMessage",ex.getMessage());
+
 
     }
 

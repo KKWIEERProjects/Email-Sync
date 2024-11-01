@@ -23,7 +23,6 @@ public class LoginControl {
 
     @GetMapping("/login")
     public ModelAndView modelAndView(){
-
         return new ModelAndView("login");
     }
 

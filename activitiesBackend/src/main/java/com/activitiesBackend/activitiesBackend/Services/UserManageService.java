@@ -54,6 +54,10 @@ public class UserManageService implements UserManageInterface{
         return userRepo.findUsernamesByAdminId(admin_id);
     }
 
+    public List<User> getWorkersBySearch(String admin_id,String search){
+        return userRepo.findUsernamesByAdminIdAndSearch(admin_id,search);
+    }
+
 
 
     public User getUser(String id) throws Exception {

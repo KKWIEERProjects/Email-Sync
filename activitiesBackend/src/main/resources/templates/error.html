@@ -1,51 +1,83 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<style>
-    /* Style for the toast notification */
-    .toast {
-        visibility: hidden;
-        min-width: 250px;
-        margin-left: -125px;
-        background-color: #ff4d4d;
-        color: #fff;
-        text-align: center;
-        border-radius: 5px;
-        padding: 16px;
-        position: fixed;
-        z-index: 1;
-        left: 50%;
-        bottom: 30px;
-        font-size: 17px;
-    }
-    .toast.show {
-        visibility: visible;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-    @keyframes fadein {
-        from {bottom: 0; opacity: 0;}
-        to {bottom: 30px; opacity: 1;}
-    }
-    @keyframes fadeout {
-        from {bottom: 30px; opacity: 1;}
-        to {bottom: 0; opacity: 0;}
-    }
-</style>
-    <body>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Something Went Wrong</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-        <div >
-            <h1>OOPS!</h1>
-            <h2 th:text="${msg}"></h2>
-            <a th:href="@{/notify}">Go home</a>
-        </div>
-        <div id="toast" class="toast" th:if="${errorMessage != null}" th:text="${errorMessage}"></div>
+        body, html {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f7f7;
+            color: #333;
+        }
 
-        <script>
-            // Show toast if errorMessage exists
-            var toast = document.getElementById("toast");
-            if (toast) {
-                toast.classList.add("show");
-                setTimeout(function(){ toast.classList.remove("show"); }, 3000); // Hide after 3 seconds
-            }
-        </script>
-    </body>
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+        }
 
+        h1 {
+            font-size: 3em;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            background-color: #2979b7;
+        }
+
+        .back-link {
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .back-link:hover {
+            color: #2979b7;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Oops!</h1>
+    <p th:text="${msg}">Something went wrong. Please try again later.</p>
+<!--    <p th:text="${errorMessage}">Something went wrong. Please try again later.</p>-->
+    <a href="/notify" class="btn">Return to Home</a>
+    <p class="back-link" onclick="window.history.back()">Go Back</p>
+</div>
+</body>
 </html>

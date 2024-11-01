@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,9 +21,14 @@ public class AdminController {
     private UserManageService userManageService;
 
     @GetMapping("/admin")
-    public ModelAndView getAdmin(HttpSession session){
+    public ModelAndView getAdmin(HttpSession session,
+                                 @RequestParam(required = false) String search){
         String id=(String) session.getAttribute("id");
-        return new ModelAndView("admin/admin").addObject("coos",userManageService.getWorkers(id));
+        if(search==null || search.isEmpty())
+            return new ModelAndView("admin/admin").addObject("coos",userManageService.getWorkers(id));
+        else
+            return new ModelAndView("admin/admin").addObject("coos",userManageService.getWorkersBySearch(id,search));
+
     }
 
 }

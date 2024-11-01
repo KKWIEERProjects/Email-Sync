@@ -136,8 +136,10 @@
             </div>
             <h1>Assigned Work</h1>
             <div class="event-actions">
-                <input type="text" placeholder="Search using name or type">
-                <!-- <button class="create-event">Add Co-ordinator</button> -->
+               <form action="/admin" method="get">
+                    <input type="text" placeholder="Search using name or type" name="search">
+                   <input type="submit" value="Search"/>
+               </form>
 
                 <button type="button" class="create-event" onclick="showPopup()">Add Co-ordinator</button>
 
