@@ -100,8 +100,9 @@ public class EmailSendController {
     public ModelAndView update(@RequestParam String id,@RequestParam String status){
         System.out.println(status);
         StatusIQ statusIQ=statusService.updateStatus(id,status);
+
         if(status.equals("Accepted") || status.equals("Rejected")){
-            historyService.record(statusIQ,"NaN","NaN");
+            historyService.record(statusIQ,"Personal","Personal");
             System.out.println(id);
             statusService.remove(id);
         }

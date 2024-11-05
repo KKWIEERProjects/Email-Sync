@@ -30,7 +30,7 @@
 <div class="header">
     <div class="div">
         <div class="div-2">
-            <div class="div-3">   <img src="/img/newLogo.jpg"></img></div>
+            <div class="div-3">   <img src="/img/newLogo.jpg"></div>
             <div class="mspv">
                 <a href="/notify">Event Sync</a>
             </div>
@@ -53,9 +53,6 @@
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </button>
 
-                        <!-- <a href="#"><i class="fa fa-bell " aria-hidden="true"   style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i></a>
-                        <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a>
-                        -->
 
                         <div class="notification-popup">
                             <h4>Recent Notifications</h4>
@@ -87,11 +84,6 @@
 
 
                 </div>
-
-
-                <!-- <i class="fa fa-bell" aria-hidden="true" style="font-size:27px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 10px 18px;"></i> -->
-                <!-- <a href="index.html"><i class="fa fa-user-circle-o" aria-hidden="true" style="font-size:30px; color: #007bff; border: 1px solid #ccc; border-radius: 5px; padding: 9px 18px;"></i></a> -->
-
 
             </div>
         </div>
@@ -161,26 +153,48 @@
                 <td th:text="${stat.getName()}"></td>
                 <td th:text="${stat.getInfo()}"></td>
                 <td th:text="${stat.getStatus()}"></td>
-                <td> <form id="eventForm" action="#" th:action="@{/update}"  method="post">
-                    <input type="hidden" name="id" th:value="${stat.getId()}">
-                    <label for="status">Choose Status:</label>
-                    <select id="status" name="status" onchange="submitForm()">
+<!--                <td> <form id="eventForm" action="#" th:action="@{/update}"  method="post">-->
+<!--                    <input type="hidden" name="id" th:value="${stat.getId()}">-->
+<!--                    <label for="status">Choose Status:</label>-->
+<!--                    <select id="status" name="status" onchange="submitFormWithSelectedValue()">-->
 
-                        <option value="Pending">Pending</option>
-                        <option value="Accepted">Accepted</option>
-                        <option value="Rejected">Rejected</option>
+<!--                        <option value="Pending">Pending</option>-->
+<!--                        <option value="Accepted">Accepted</option>-->
+<!--                        <option value="Rejected">Rejected</option>-->
 
-                    </select>
+<!--                    </select>-->
 
-                </form></td>
-                <td th:text="${stat.getCoo()}"></td>
+<!--                </form></td>-->
+                <td>
+                    <form action="/update" method="post">
+                        <input type="hidden" name="id" th:value="${stat.getId()}">
+                        <button class="logout" type="submit" value="Accepted" name="status">Accepted</button>
+                    </form>
+                    <form action="/update" method="post">
+                        <input type="hidden" name="id" th:value="${stat.getId()}">
+                        <button class="logout" type="submit" value="Rejected" name="status">Rejected</button>
+                    </form>
+                </td>
+
             </tr>
             </tbody>
         </table>
 
-
+    </main>
 </div>
-<script src="js/coordinator.js"></script>
+<script>
+    function submitFormWithSelectedValue() {
+         const form = document.getElementById('eventForm');
+         const selectedStatus = document.getElementById('status').value;
+
+         // Update the 'status' field explicitly with the selected value
+         form.status.value = selectedStatus;
+
+
+         // Submit the form with the correct selected status
+         form.submit();
+     }
+</script>
 </body>
 
 </html>

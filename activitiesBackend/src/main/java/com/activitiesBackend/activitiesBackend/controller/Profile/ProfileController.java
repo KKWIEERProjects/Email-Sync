@@ -2,6 +2,7 @@ package com.activitiesBackend.activitiesBackend.controller.Profile;
 
 import com.activitiesBackend.activitiesBackend.Services.UserManageService;
 import com.activitiesBackend.activitiesBackend.dto.User;
+import com.activitiesBackend.activitiesBackend.exceptions.EmailAddressException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +25,9 @@ public class ProfileController {
     }
 
     @PostMapping("/profile/email")
-    public ModelAndView moemail(HttpSession session, @RequestParam String email) throws Exception{
+    public ModelAndView moemail(HttpSession session, @RequestParam String email) throws EmailAddressException,Exception{
         String id=(String) session.getAttribute("id");
-        userManageService.changeEmail(id,email);
+        userManageService.changeEmail(id, email);
         return new ModelAndView("redirect:/profile");
     }
 
