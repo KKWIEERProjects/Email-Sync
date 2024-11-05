@@ -47,15 +47,15 @@ public class FetchNotifyController {
                                   @RequestParam String mail,
                                   HttpSession session){
         Assign assign=assignService.getPostById(id);
-        String sid=structureService.save(assign,name,venue,(String) session.getAttribute("user"),mail);
-        System.out.println("sid"+sid);
+        String sid=structureService.save(assign,name,venue,(String) session.getAttribute("fullname"),mail);
+        System.out.println("sid:"+sid);
         return new ModelAndView("redirect:/allsend");
 
     }
 
     @GetMapping("/allsend")
     public ModelAndView getAllStructure(HttpSession session){
-        String coo=(String) session.getAttribute("user");
+        String coo=(String) session.getAttribute("fullname");
         return new ModelAndView("structure/allStructure").addObject("structures",structureService.getAllStructure(coo));
     }
 

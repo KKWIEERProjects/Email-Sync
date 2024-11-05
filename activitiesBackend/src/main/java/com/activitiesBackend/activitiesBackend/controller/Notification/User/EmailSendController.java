@@ -80,7 +80,8 @@ public class EmailSendController {
 
             mailUtil.sendMail(response, temp, hash);
         }catch (Exception ex){
-            return new ModelAndView("redirect:/allstatus");
+            ex.printStackTrace();
+            return new ModelAndView("redirect:/error");
         }
 
         statusService.setStatusTable(structure);
@@ -132,9 +133,11 @@ public class EmailSendController {
     @PostMapping("/mail/update/set")
     public ResponseEntity getEntity(@RequestParam String id,@RequestParam String status
             ,@RequestParam String date,@RequestParam String phone){
+        System.out.println("here to set");
         StatusIQ statusIQ=statusService.updateStatus(id,status);
         logger.info(id);
         historyService.record(statusIQ,date,phone);
+
 
         statusService.remove(id);
 

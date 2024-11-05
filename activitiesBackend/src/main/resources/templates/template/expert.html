@@ -52,14 +52,14 @@
 <body>
 
 <div class="email-container">
-    <h1>Invitation to Speak at <span th:text="${event}">Expert Talk</span></h1>
+    <h1>Invitation to Speak about <span th:text="${event}">Expert Talk</span></h1>
 
     <p>Dear <span th:text="${name}">Dr. John Doe</span>,</p>
 
     <p>
         We are pleased to invite you as a keynote speaker for our upcoming event,
         <span class="label" th:text="${event}">Expert Talk</span>,
-        scheduled for <span th:text="${dateStart} + '-' + ${dateEnd}">January 15, 2024</span> at
+        scheduled between <span th:text="${dateStart} + ' to ' + ${dateEnd}">January 15, 2024</span> at
         <span th:text="${time}">10:00 AM</span> at <span th:text="${venue}">Conference Hall, XYZ Venue</span>.
     </p>
 
@@ -83,7 +83,7 @@
 
     <p>Best regards,<br>
         <strong>The Event Coordination Team</strong><br>
-        XYZ Organization</p>
+        KK wagh Organization</p>
 
    <a th:href="@{'http://localhost:8080/mail/update/'+${id}+'?status=Accepted'+ '&dateStart=' + ${dateStart} + '&dateEnd=' + ${dateEnd}}" class="button" >Accept </a>
 
