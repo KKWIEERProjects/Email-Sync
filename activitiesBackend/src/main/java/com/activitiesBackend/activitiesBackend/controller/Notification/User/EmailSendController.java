@@ -116,11 +116,14 @@ public class EmailSendController {
     @GetMapping("/mail/update/{id}")
     public ModelAndView updateStatus(@PathVariable String id,@RequestParam String status
                                 ,@RequestParam String dateStart,@RequestParam String dateEnd){
-
-        return new ModelAndView("updates/update").addObject("id",id)
-                .addObject("status",status)
-                .addObject("dateStart",dateStart)
-                .addObject("dateEnd",dateEnd);
+        if(statusService.isPresent(id)) {
+            return new ModelAndView("updates/update").addObject("id", id)
+                    .addObject("status", status)
+                    .addObject("dateStart", dateStart)
+                    .addObject("dateEnd", dateEnd);
+        }else{
+            return new ModelAndView("updates/notpresent");
+        }
 
     }
 

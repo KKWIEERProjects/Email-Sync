@@ -44,4 +44,9 @@ public class StatusService {
     public void remove(String id){
         statusRepo.deleteById(id);
     }
+
+    public boolean isPresent(String id){
+        return statusRepo.findById(id).isPresent();
+
+    }
 }
